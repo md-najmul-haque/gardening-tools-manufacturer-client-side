@@ -5,6 +5,7 @@ import Navbar from './Pages/Shared/Navbar/Navbar';
 import Footer from './Pages/Shared/Footer/Footer';
 import NotFound from './Pages/NotFound/NotFound';
 import Login from './Pages/Login/Login/Login';
+import SignUp from './Pages/Login/SignUp/SignUp';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

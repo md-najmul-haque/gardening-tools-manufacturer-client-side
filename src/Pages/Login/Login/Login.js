@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init'
@@ -11,11 +11,11 @@ const Login = () => {
     const navigate = useNavigate()
 
     const [
-        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
@@ -26,7 +26,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data)
-        // createUserWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(data.email, data.password)
     };
 
     if (loading || gLoading) {
@@ -52,7 +52,7 @@ const Login = () => {
                     <h2 className="text-center text-2xl font-bold">Login</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
+                        <div className="form-control w-full max-w-xs">
                             <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("email", {
                                 required: {
                                     value: true,
@@ -70,7 +70,7 @@ const Login = () => {
                             </label>
                         </div>
 
-                        <div>
+                        <div className="form-control w-full max-w-xs">
                             <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("password", {
                                 required: {
                                     value: true,
@@ -93,7 +93,7 @@ const Login = () => {
                         <input type="submit" class="btn w-full btn-primary mt-5" value='login' />
 
                     </form>
-                    <small><span> New in Gardening Plus?</span> <Link className='text-primary' to='/register'>Create New Account</Link ></small>
+                    <small><span> New in Gardening Plus?</span> <Link className='text-primary' to='/signup'>Create New Account</Link ></small>
 
                     <div class="divider">or</div>
 
