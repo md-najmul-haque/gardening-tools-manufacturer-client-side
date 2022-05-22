@@ -6,10 +6,11 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/portfolio'>Portfolio</Link></li>
+        <li><Link to='/login'>Login</Link></li>
 
     </>
     return (
-        <div class="navbar bg-dark">
+        <div class="navbar bg-base-100">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -19,7 +20,7 @@ const Navbar = () => {
                         {menuItem}
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl">Gardening Plus</a>
+                <Link to='/' class="btn btn-ghost normal-case text-xl">Gardening Plus</Link>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">

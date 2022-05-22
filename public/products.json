@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "High Performance Hand Garden Pruners",
+        "description": "The premium pruning clippers are constructed of forged aluminum handles and hardened steel blades.This bypass pruner offers a large cutting capacity and well-balanced weight for optimal gardening.",
+        "img": "https://i.ibb.co/gdjzM9M/Hand-Garden-Pruners.jpg",
+        "price": "55",
+        "minimum-order-quantity": "100",
+        "available": "2000"
+    },
+    {
+        "id": 2,
+        "name": "Branch Cutter",
+        "description": " 33-inch Branch Cutter. Compound cutting magnifies input force to do 35% more work with less effort.Compacts steel molecules into our strongest, most durable tools that stay sharper longer.",
+        "img": "https://i.ibb.co/1rssBj6/Branch-Cutter-2.jpg",
+        "price": "55",
+        "minimum-order-quantity": "100",
+        "available": "2500"
+    },
+    {
+        "id": 3,
+        "name": "Hedge Shears with Smooth Plastic Grips",
+        "description": "Partly serrated edge for cutting up to .6-inch thick branches. Sturdy rubber bumpers reduce fatigue through superior cutting performance and very comfortable handling",
+        "img": "https://i.ibb.co/4JLr3LH/Hedge-Shears.jpg",
+        "price": "70",
+        "minimum-order-quantity": "100",
+        "available": "2200"
+    },
+    {
+        "id": 4,
+        "name": "Gardening Fork",
+        "description": "The premium pruning clippers are constructed of forged aluminum handles and hardened steel blades.This bypass pruner offers a large cutting capacity and well-balanced weight for optimal gardening.",
+        "img": "https://i.ibb.co/BytNpQ4/Gardening-Fork.jpg",
+        "price": "70",
+        "minimum-order-quantity": "100",
+        "available": "3000"
+    },
+    {
+        "id": 5,
+        "name": "Premium Stainless Steel Garden Trowel",
+        "description": "The premium pruning clippers are constructed of forged aluminum handles and hardened steel blades.This bypass pruner offers a large cutting capacity and well-balanced weight for optimal gardening.",
+        "img": "https://i.ibb.co/QP4PZGf/Garden-Trowel.jpg",
+        "price": "70",
+        "minimum-order-quantity": "100",
+        "available": "2800"
+    },
+    {
+        "id": 6,
+        "name": "Chopping Axe",
+        "description": "Chops deeper with each swing to get more done faster. Perfected balance and power-to-weight ratio increases swing speed to multiply power, much like an aluminum baseball bat.",
+        "img": "https://i.ibb.co/KG5j4Q2/Chopping-Axe.jpg",
+        "price": "48",
+        "minimum-order-quantity": "100",
+        "available": "2700"
+    }
+]
