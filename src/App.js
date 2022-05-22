@@ -1,13 +1,13 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home/Home';
+import Home from './Pages/Home/Home/Home';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import Footer from './Pages/Shared/Footer/Footer';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="p-10">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
