@@ -1,10 +1,9 @@
-import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
-
 
 
 const SignUp = () => {
@@ -17,20 +16,24 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [displayName, setDisplayName] = useState('');
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const navigate = useNavigate()
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => {
-        createUserWithEmailAndPassword(data.email, data.password)
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password)
+        // setDisplayName(data.name)
+        await updateProfile({ displayName: data.name });
         console.log(data)
     };
 
     let errorMessage;
 
-    if (loading || gLoading) {
+    if (loading || gLoading || updating) {
         return <Loading />
     }
-    if (error || gError) {
+    if (error || gError || updateError) {
         return (
 
             errorMessage = <p> {gError?.message}</p>
@@ -40,6 +43,7 @@ const SignUp = () => {
 
     if (user || gUser) {
         console.log(gUser)
+        navigate('/')
     }
 
 

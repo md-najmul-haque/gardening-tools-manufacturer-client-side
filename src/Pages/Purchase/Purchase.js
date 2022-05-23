@@ -1,28 +1,45 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-
 import { useQuery } from 'react-query';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
+
+    const [user, loading] = useAuthState(auth)
+    console.log(user)
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const { data: tool, loading } = useQuery('tool', () => fetch(`http://localhost:5000/tools/${id}`)
+    const { data: tool, isLoading } = useQuery('tool', () => fetch(`http://localhost:5000/tools/${id}`)
         .then(res => res.json()))
 
-    if (loading) {
+    if (loading || isLoading) {
         return <Loading />
     }
 
-
+    const { _id, name, img, description, price, available, minimumOrderQuantity } = tool
 
     const onSubmit = data => {
-        console.log(data)
+
+
+        const booking = {
+            customerName: user.displayName,
+            email: user.email,
+            address: data.address,
+            state: data.state,
+            country: data.country,
+            phone: data.phone,
+
+            id: _id,
+            toolName: name,
+            price,
+            orderQuantity: data.number
+
+        }
     };
-
-
 
     return (
         <div className='shadow-xl bg-white'>
@@ -30,75 +47,130 @@ const Purchase = () => {
                 <div class="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
                     <div class="card w-96">
                         <figure class="px-10 pt-10">
-                            <img className='w-6/12' src={tool.img} alt="Shoes" class="rounded-xl" />
+                            <img className='w-6/12' src={img} alt="Shoes" class="rounded-xl" />
                         </figure>
                         <div class="card-body items-center text-center">
-                            <h2 class="card-title">{tool.name}</h2>
-                            <p>{tool.description}</p>
-                            <p>Price:$ {tool.price} </p>
-                            <p>MOQ: {tool.minimumOrderQuantity} pcs</p>
-                            <p>Available Quantity: {tool.available} pcs</p>
+                            <h2 class="card-title">{name}</h2>
+                            <p>{description}</p>
+                            <p>Price:$ {price} </p>
+                            <p>MOQ: {minimumOrderQuantity} pcs</p>
+                            <p>Available Quantity: {available} pcs</p>
                         </div>
 
                     </div>
 
                     <div class="card-body w-96">
-                        <h2 className="text-center text-2xl font-bold">Sign Up</h2>
+                        <h2 className="text-center text-2xl font-bold">Place Your Order!</h2>
 
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="form-control w-full max-w-xs">
+                        <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
+                            <div className="form-control w-full max-w-xs mb-2">
                                 <input
                                     type="text"
                                     placeholder="Your Name"
                                     className="input input-bordered w-full max-w-xs"
-                                    {...register("name", {
+                                    value={user?.displayName}
+                                    disabled
+                                    {...register("name")} />
+                            </div>
+
+                            <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Type here"
+                                    class="input input-bordered w-full max-w-xs"
+                                    value={user?.email}
+                                    disabled
+                                    {...register("email")} />
+                            </div>
+
+                            <div className="form-control w-full max-w-xs">
+                                <input
+                                    type="text"
+                                    placeholder="Your Address"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("address", {
                                         required: {
                                             value: true,
-                                            message: 'Name is required'
+                                            message: 'Your address is required'
+                                        }
+                                    })} />
+
+                                <label className="label">
+                                    {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full max-w-xs">
+                                <input
+                                    type="text"
+                                    placeholder="State"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("state", {
+                                        required: {
+                                            value: true,
+                                            message: 'State is required'
                                         }
                                     })} />
                                 <label className="label">
-                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                    {errors.state?.type === 'required' && <span className="label-text-alt text-red-500">{errors.state.message}</span>}
                                 </label>
                             </div>
 
                             <div className="form-control w-full max-w-xs">
-                                <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("email", {
-                                    required: {
-                                        value: true,
-                                        message: 'Email is required'
-                                    },
-                                    pattern: {
-                                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                        message: 'Please provide valid email address'
-                                    }
-                                })} />
-
+                                <input
+                                    type="text"
+                                    placeholder="Country"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("country", {
+                                        required: {
+                                            value: true,
+                                            message: 'Country is required'
+                                        }
+                                    })} />
                                 <label className="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors.country?.type === 'required' && <span className="label-text-alt text-red-500">{errors.country.message}</span>}
                                 </label>
                             </div>
 
                             <div className="form-control w-full max-w-xs">
-                                <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("password", {
-                                    required: {
-                                        value: true,
-                                        message: 'Password is required'
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: 'Password length must be six character or more'
-                                    }
-                                })} />
-
+                                <input
+                                    type="text"
+                                    placeholder="Phone Number"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("phone", {
+                                        required: {
+                                            value: true,
+                                            message: 'Phone is required'
+                                        }
+                                    })} />
                                 <label className="label">
-                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                                    {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                    {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
                                 </label>
                             </div>
 
-                            <input type="submit" class="btn w-full btn-primary mt-5" value='Place Order' />
+                            <div className="form-control w-full max-w-xs">
+                                <input
+                                    type="number"
+                                    defaultValue={100}
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("number", {
+                                        min: {
+                                            value: 100,
+                                            message: "Sorry! You can't order less than 100pcs"
+                                        },
+                                        max: {
+                                            value: `${tool.available}`,
+                                            message: `Sorry! You can't order more than our available quantity`
+                                        }
+                                    })}
+                                />
+                                <label className="label">
+                                    {errors.number?.type === 'min' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
+                                    {errors.number?.type === 'max' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
+                                </label>
+                            </div>
+
+                            <input type="submit" class="btn w-full btn-primary" value='Place Order' />
 
                         </form>
 
