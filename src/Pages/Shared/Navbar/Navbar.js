@@ -8,6 +8,7 @@ import Loading from '../Loading/Loading';
 const Navbar = () => {
 
     const [user, loading] = useAuthState(auth);
+    console.log(user)
     const navigate = useNavigate()
 
     if (loading) {
@@ -23,6 +24,8 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/portfolio'>Portfolio</Link></li>
+        <li><Link to=''>{user.displayName}</Link></li>
+        {/* <p className='pt-3'>{user.displayName}</p> */}
         {
             user ? <button onClick={handleSignOut} class="btn btn-ghost">Sign Out</button> : <li><Link to='/login'>Login</Link></li>
         }
