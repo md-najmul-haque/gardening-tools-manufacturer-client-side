@@ -24,7 +24,6 @@ const Purchase = () => {
 
     const onSubmit = data => {
 
-
         const booking = {
             customerName: user.displayName,
             email: user.email,
@@ -39,6 +38,15 @@ const Purchase = () => {
             orderQuantity: data.number
 
         }
+        fetch(`http://localhost:5000/booking`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
     };
 
     return (
