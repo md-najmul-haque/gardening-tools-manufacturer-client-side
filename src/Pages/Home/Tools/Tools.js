@@ -9,11 +9,13 @@ const Tools = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <div>
-            <h2>tools: {products.length}</h2>
-            {
-                products.map(product => <Tool key={product.id} product={product}></Tool>)
-            }
+        <div className='py-10'>
+            <h2 className='text-3xl text-bold text-center'>Our Products</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto'>
+                {
+                    products.map(product => <Tool key={product.id} product={product}></Tool>)
+                }
+            </div>
         </div>
     );
 };
