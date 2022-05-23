@@ -7,6 +7,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Login from './Pages/Login/Login/Login';
 import SignUp from './Pages/Login/SignUp/SignUp';
 import Purchase from './Pages/Purchase/Purchase';
+import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 
 
 function App() {
@@ -15,7 +16,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/purchase" element={<Purchase />} />
+        <Route path="/purchase/:id" element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        } />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
