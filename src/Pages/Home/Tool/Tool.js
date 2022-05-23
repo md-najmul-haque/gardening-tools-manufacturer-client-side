@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Tool = ({ product }) => {
     console.log(product)
@@ -13,10 +14,10 @@ const Tool = ({ product }) => {
                     <h2 class="card-title">{name}</h2>
                     <p>{description}</p>
                     <p>Price: $ {price}</p>
-                    <p>MOQ: {minimumOrderQuantity}</p>
-                    <p>Available Quantity: {available}</p>
+                    <p>MOQ: {minimumOrderQuantity} pcs</p>
+                    <p>Available Quantity: {available} pcs</p>
                     <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <Link to='/purchase' class="btn btn-primary text-white">Buy Now</Link>
                     </div>
                 </div>
             </div>
