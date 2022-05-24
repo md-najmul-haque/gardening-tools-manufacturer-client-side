@@ -2,13 +2,15 @@ import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const { id } = useParams()
     const orderQuantity = useRef('');
+    const navigate = useNavigate()
 
     const [user, loading] = useAuthState(auth)
     console.log(user)
@@ -23,7 +25,7 @@ const Purchase = () => {
 
     const { _id, name, img, description, price, available, minimumOrderQuantity } = tool
 
-    const onSubmit = data => {
+    const onSubmit = (data, e) => {
 
         const booking = {
             customerName: user.displayName,
@@ -47,7 +49,13 @@ const Purchase = () => {
             body: JSON.stringify(booking)
         })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+
+                console.log(result)
+            });
+        toast(`Your booking for ${name} is placed successfully`)
+        e.target.reset();
+        navigate('/')
     };
 
     return (
@@ -180,8 +188,8 @@ const Purchase = () => {
                                 </label>
                             </div>
 
-                            <input disabled={minimumOrderQuantity > orderQuantity || available < orderQuantity} type="submit" class="btn w-full btn-primary" value='Place Order' />
-
+                            <input type="submit" class="btn w-full btn-primary" value='Place Order' />
+                            {/*  disabled={minimumOrderQuantity > orderQuantity || available < orderQuantity} */}
                         </form>
 
                     </div>
