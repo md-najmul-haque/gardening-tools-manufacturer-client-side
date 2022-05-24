@@ -188,7 +188,7 @@ const Purchase = () => {
                                 </label>
                             </div>
 
-                            <input type="submit" class="btn w-full btn-primary" value='Place Order' />
+                            <input type="submit" class="btn w-full btn-primary text-white" value='Place Order' />
                             {/*  disabled={minimumOrderQuantity > orderQuantity || available < orderQuantity} */}
                         </form>
 

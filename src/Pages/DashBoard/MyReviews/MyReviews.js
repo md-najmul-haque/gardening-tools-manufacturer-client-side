@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
 
 const MyReviews = () => {
 
@@ -37,6 +38,7 @@ const MyReviews = () => {
             });
 
         e.target.reset();
+        toast(`Thanks for your feedback.`)
     };
 
     return (
