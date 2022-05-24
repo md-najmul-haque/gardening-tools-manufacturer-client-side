@@ -14,33 +14,34 @@ const MyProfile = () => {
     if (loading) {
         return <Loading />
     }
+    const email = user.email
     const onSubmit = (data, e) => {
 
-        const booking = {
+        const userProfile = {
             customerName: user.displayName,
-            email: user.email,
+            email: email,
+            education: data.education,
+            linkedin: data.linkedin,
             address: data.address,
             state: data.state,
             country: data.country,
             phone: data.phone,
-
-
         }
-        fetch(`http://localhost:5000/booking`, {
-            method: 'POST',
+
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(userProfile)
         })
             .then(res => res.json())
             .then(result => {
 
                 console.log(result)
             });
-        // toast(`Your booking for ${name} is placed successfully`)
         e.target.reset();
-
+        toast.success(`Your profile is updated successfully`)
     };
     return (
         <div className='shadow-xl bg-white'>
