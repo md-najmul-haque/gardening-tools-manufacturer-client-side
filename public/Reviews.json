@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Allison",
+        "feedback": "Well made and comfortable tools. I am very much pleased with their service and delivery",
+        "img": "https://i.ibb.co/SPNF12d/user1.png",
+        "country": "USA",
+        "rating": 5
+    },
+    {
+        "name": "Michelle N",
+        "feedback": "Excellent service with good quality product. Delivery is to fast and their product quality is very awesome",
+        "img": "https://i.ibb.co/9H2W6ts/user2.png",
+        "country": "Germany",
+        "rating": 5
+    },
+    {
+        "name": "Adam H.",
+        "feedback": "Best products for the lowest price. Highly recommended.",
+        "img": "https://i.ibb.co/y6s7vWB/user3.png",
+        "country": "Japan",
+        "rating": 5
+    },
+    {
+        "name": "Newton",
+        "feedback": "Very sharp and study set of loppers. Very pleased with the purchase. Recommended for effective pruning and branch cutting",
+        "img": "https://i.ibb.co/GdbpYB0/user4.png",
+        "country": "USA",
+        "rating": 5
+    },
+    {
+        "name": "Richie Beans",
+        "feedback": "The shovel and branch cutter is nice and durable but not good for digging a shallow grave to hide a body. Great for flowers though.",
+        "img": "https://i.ibb.co/z4kwJPS/user5.png",
+        "country": "Canada",
+        "rating": 5
+    },
+    {
+        "name": "Hesam Boroumand",
+        "feedback": "It was exactly what I was looking for. There service and delivery is excellent. Also their product quality is best with lowest price",
+        "img": "https://i.ibb.co/WyMfwbX/user6.png",
+        "country": "UAE",
+        "rating": 5
+    }
+]
