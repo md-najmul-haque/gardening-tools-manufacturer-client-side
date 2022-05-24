@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
+    const orderQuantity = useRef('');
 
     const [user, loading] = useAuthState(auth)
     console.log(user)
@@ -159,6 +160,7 @@ const Purchase = () => {
                             <div className="form-control w-full max-w-xs">
                                 <input
                                     type="number"
+                                    ref={orderQuantity}
                                     defaultValue={100}
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("number", {
@@ -178,7 +180,7 @@ const Purchase = () => {
                                 </label>
                             </div>
 
-                            <input type="submit" class="btn w-full btn-primary" value='Place Order' />
+                            <input disabled={minimumOrderQuantity > orderQuantity || available < orderQuantity} type="submit" class="btn w-full btn-primary" value='Place Order' />
 
                         </form>
 

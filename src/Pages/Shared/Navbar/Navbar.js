@@ -22,11 +22,13 @@ const Navbar = () => {
 
     const menuItem = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/purchase/:id'>Purchase</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/portfolio'>Portfolio</Link></li>
         {
-            user && <li><Link to=''>{user?.displayName}</Link></li>
+            user && <>
+                <li><Link to='/dashboard'>Dashboard</Link></li>
+                <li><Link to=''>{user?.displayName}</Link></li>
+            </>
         }
         {/* <p className='pt-3'>{user?.displayName}</p> */}
         {
