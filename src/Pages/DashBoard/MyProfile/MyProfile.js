@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
+import defaultUser from '../../../assets/user/defaultUser.png'
+import { useQuery } from 'react-query';
 
 const MyProfile = () => {
 
+    const [userProfile, setUserProfile] = useState({})
+    console.log('userProfile', userProfile)
     const [user, loading] = useAuthState(auth)
+
+    useEffect(() => {
+        if (user) {
+            fetch(`http://localhost:5000/user/email=${email}`)
+                .then(res => res.json())
+                .then(user => { setUserProfile(user) })
+        }
+
+    }, [user])
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     if (loading) {
         return <Loading />
     }
+
     const email = user.email
     const onSubmit = (data, e) => {
 
@@ -37,27 +51,33 @@ const MyProfile = () => {
         })
             .then(res => res.json())
             .then(result => {
-
                 console.log(result)
             });
         e.target.reset();
         toast.success(`Your profile is updated successfully`)
     };
+
+
+
+
     return (
         <div className='shadow-xl bg-white'>
             <div class="hero min-h-screen">
                 <div class="hero-content w-200 bg-base-100 flex-col lg:flex-row mx-auto">
                     <div class="card w-96">
-                        {/* <figure class="px-10 pt-10">
-                            <img className='w-6/12' src={img} alt="Shoes" class="rounded-xl" />
+                        <figure class="px-10 pt-10">
+                            <img className='w-6/12' src={user.img ? user.img : defaultUser} alt="Shoes" class="rounded-xl" />
                         </figure>
                         <div class="card-body items-center text-center">
-                            <h2 class="card-title">{name}</h2>
-                            <p>{description}</p>
-                            <p>Price:$ {price} </p>
-                            <p>MOQ: {minimumOrderQuantity} pcs</p>
-                            <p>Available Quantity: {available} pcs</p>
-                        </div> */}
+                            <h2 class="card-title">Name: {userProfile?.customerName}</h2>
+                            <p>Email: {userProfile.email}</p>
+                            <p>Price:$ {userProfile?.education} </p>
+                            <p>MOQ: {userProfile?.linkedin} </p>
+                            <p>Address: {userProfile?.address} </p>
+                            <p>State: {userProfile?.state} </p>
+                            <p>Country: {userProfile?.country} </p>
+                            <p>Phone: {userProfile?.phone} </p>
+                        </div>
 
                     </div>
 
