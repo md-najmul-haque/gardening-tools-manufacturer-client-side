@@ -8,7 +8,6 @@ const AddProduct = () => {
     const imageStorageKey = 'd90f0f7587defd256d8cd2cd85b0500d'
 
     const onSubmit = async data => {
-        console.log('data', data)
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -21,7 +20,7 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log('result inside fetch', result)
+
                 if (result.success) {
                     const img = result.data.url;
 
@@ -161,7 +160,7 @@ const AddProduct = () => {
                             </label>
                         </div>
 
-                        <input type="submit" class="btn w-full btn-primary text-white" value='Add Product' />
+                        <input type="submit" class="btn w-full btn-primary text-white max-w-xs" value='Add Product' />
 
                     </form>
 
