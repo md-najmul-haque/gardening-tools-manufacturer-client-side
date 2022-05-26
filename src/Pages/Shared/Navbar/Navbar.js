@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const [user, loading] = useAuthState(auth);
     console.log(user)
+
     const navigate = useNavigate()
 
     if (loading) {

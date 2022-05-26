@@ -18,6 +18,7 @@ import MakeAdmin from './Pages/DashBoard/MakeAdmin/MakeAdmin';
 import ManageOrders from './Pages/DashBoard/ManageOrders/ManageOrders';
 import AddProduct from './Pages/DashBoard/AddProduct/AddProduct';
 import ManageProduct from './Pages/DashBoard/ManageProduct/ManageProduct';
+import RequireAdmin from './Pages/Login/RequireAdmin/RequireAdmin';
 
 
 function App() {
@@ -35,10 +36,30 @@ function App() {
           <Route path="orders" element={<RequireAuth><MyOrders /></RequireAuth>} />
           <Route path="reviews" element={<RequireAuth><MyReviews /></RequireAuth>} />
           <Route path="profile" element={<RequireAuth><MyProfile /></RequireAuth>} />
-          <Route path="makeAdmin" element={<RequireAuth><MakeAdmin /></RequireAuth>} />
-          <Route path="manageOrder" element={<RequireAuth><ManageOrders /></RequireAuth>} />
-          <Route path="addProduct" element={<RequireAuth><AddProduct /></RequireAuth>} />
-          <Route path="manageProduct" element={<RequireAuth><ManageProduct /></RequireAuth>} />
+          <Route path="makeAdmin" element={
+            <RequireAuth>
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            </RequireAuth>} />
+          <Route path="manageOrder" element={
+            <RequireAuth>
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            </RequireAuth>} />
+          <Route path="addProduct" element={
+            <RequireAuth>
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            </RequireAuth>} />
+          <Route path="manageProduct" element={
+            <RequireAuth>
+              <RequireAdmin>
+                <ManageProduct />
+              </RequireAdmin>
+            </RequireAuth>} />
         </Route>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />

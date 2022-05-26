@@ -1,7 +1,18 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import useAdmin from '../../../hooks/useAdmin';
+import Loading from '../../Shared/Loading/Loading';
 
 const Dashboard = () => {
+    const [user, loading] = useAuthState(auth)
+    const [admin, adminLoading] = useAdmin(user)
+
+    if (loading || adminLoading) {
+        return <Loading />
+    }
+
     return (
 
         <div class="drawer drawer-mobile">
@@ -14,13 +25,21 @@ const Dashboard = () => {
                 <label for="dashboard-sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
 
-                    <li><Link to='/dashboard/orders'>My Orders</Link></li>
-                    <li><Link to='/dashboard/reviews'>My Reviews</Link></li>
+                    {
+                        !admin && <>
+                            <li><Link to='/dashboard/orders'>My Orders</Link></li>
+                            <li><Link to='/dashboard/reviews'>My Reviews</Link></li>
+                        </>
+                    }
                     <li><Link to='/dashboard/profile'>My Profile</Link></li>
-                    <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
-                    <li><Link to='/dashboard/manageOrder'>Manage Orders</Link></li>
-                    <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
-                    <li><Link to='/dashboard/manageProduct'>Manage Products</Link></li>
+                    {
+                        admin && <>
+                            <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
+                            <li><Link to='/dashboard/manageOrder'>Manage Orders</Link></li>
+                            <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
+                            <li><Link to='/dashboard/manageProduct'>Manage Products</Link></li>
+                        </>
+                    }
 
                 </ul>
 
