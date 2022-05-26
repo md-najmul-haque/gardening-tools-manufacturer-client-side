@@ -23,7 +23,7 @@ const Purchase = () => {
         return <Loading />
     }
 
-    const { _id, name, img, description, price, available, minimumOrderQuantity } = tool
+    const { name, img, description, price, available, minimumOrderQuantity } = tool
 
     const onSubmit = (data, e) => {
 
@@ -34,8 +34,6 @@ const Purchase = () => {
             state: data.state,
             country: data.country,
             phone: data.phone,
-
-            id: _id,
             toolName: name,
             price,
             orderQuantity: data.number
