@@ -23,6 +23,7 @@ import Payment from './Pages/DashBoard/Payment/Payment';
 import Blogs from './Pages/Blogs/Blogs';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import ContactUs from './Pages/ContactUs/ContactUs';
+import "react-multi-carousel/lib/styles.css";
 
 
 function App() {
