@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Tool = ({ product }) => {
     const { _id, name, img, description, price, available, minimumOrderQuantity } = product
     return (
         <div>
-            <div class="card w-96 bg-base-100 shadow-xl mx-auto">
+            <div data-aos="zoom-in-up" data-aos-duration="1500" class="card w-96 bg-base-100 shadow-xl mx-auto">
                 <figure class="px-10 pt-10">
                     <img className='w-6/12' src={img} alt="Shoes" class="rounded-xl" />
                 </figure>
@@ -24,4 +26,5 @@ const Tool = ({ product }) => {
     );
 };
 
+AOS.init();
 export default Tool;

@@ -80,4 +80,8 @@ function App() {
   );
 }
 
+<script>
+  AOS.init();
+</script>
+
 export default App;

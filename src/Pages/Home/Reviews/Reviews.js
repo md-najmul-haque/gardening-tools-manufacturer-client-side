@@ -34,8 +34,8 @@ const Reviews = (props) => {
 
     return (
 
-        <div className='my-10' >
-            <h1 className='text-xl text-center font-bold text-primary'>TESTIMONIALS</h1>
+        <div className='my-10 bg-gray-50 py-10' >
+            <h1 className='zoom-in text-xl text-center font-bold text-primary'>TESTIMONIALS</h1>
             <h2 className='text-4xl text-center'>Our Customers <span className='font-bold'>Are Saying?</span></h2>
 
             <Carousel
@@ -66,5 +66,9 @@ const Reviews = (props) => {
         </div >
     );
 };
+
+<script>
+    AOS.init();
+</script>
 
 export default Reviews;

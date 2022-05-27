@@ -1,4 +1,4 @@
-import { faBiking, faChildren, faCloudSunRain, faHeart, faLocationCrosshairs, faPersonBiking, faUsers, faUsersGear } from '@fortawesome/free-solid-svg-icons';
+import { faBiking, faChildren, faCloudSunRain, faHeart, faLocationCrosshairs, faPersonBiking, faTruckFast, faUsers, faUsersGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import FeatureProduct from '../FeatureProduct/FeatureProduct';
@@ -6,50 +6,33 @@ import './Feature.css'
 
 const Feature = () => {
 
-    const featureProducts = [
-        {
-            id: 1, name: 'Pruning shears', icon: 'faCloudSunRain', speciality: 'Make clean cuts on stems and branches up to one inch thick with hand pruners that feel like a natural extension of your hand. Using pruning shears to regularly trim perennial flowers and fruit trees, deadhead blooming plants, or cut long, wayward branches out of shrubs encourages overall plant health, while refreshing your yard and garden’s overall appearance.To help you power through stems and branches, our garden shears feature a range of technologies to maximize your cutting power, as well as other innovative features designed to enhance overall performance and ergonomics.'
-        },
-        {
-            id: 2, name: 'Hedge Shears', icon: 'faCloudSunRain', speciality: 'Making sure your garden hedges look beautiful is always a challenge. Happily, whatever your cutting requirements, Fiskars Hedge Shears can help. Carefully engineered for easy trimming, they keep haphazard hedges and bountiful bushes in shape.'
-        },
-        {
-            id: 3, name: 'World Famed Axes', icon: 'faCloudSunRain', speciality: 'Double hardened steel blades with exceptional sharpness. The highest quality materials and attention to detail. Perfectly balanced to provide you with the most top swing speed and precision, multiplying the power at impact.'
-        },
-        {
-            id: 4, name: 'Garden Trowels', icon: '', speciality: 'Why do people garden? For some, it is the joy of playing in the dirt, planting seeds and watching things grow. One key to success is to break up, loosen and aerate tough dirt in order to cultivate the earth to support healthier seeds and roots. That’s why one of the most important garden tools to have in your collection is a gardening trowel. Our collection of hand trowels ranges from durable, lightweight tools to multi-purpose garden trowels that also allow you to measure depth and handle seeds.'
-        }
-    ]
-
     return (
         <div id='feature' className='feature-container'>
             <div className='feature-section'>
-                <h1 className='text-2xl font-bold text-center text-primary'>Our Top Selling Products</h1>
+                <h1 className='text-2xl font-bold text-center text-primary'>Why you choose us?</h1>
 
                 <div className='feature-details'>
 
-                    {
-                        featureProducts.map(featureProduct => <FeatureProduct key={featureProduct.id} featureProduct={featureProduct} />)
-                    }
-                    {/* <div>
-                        <p> <span><FontAwesomeIcon icon={faCloudSunRain} /></span> <span>All Weather Conditions</span></p>
-                        <p>The All-weather bike is designed so that more people ride their bikes more often and sometimes leave their car behind. we make sure both are covered with waterproof and well insulated material.</p>
-                    </div> */}
-                    {/* <div>
-                        <p> <span><FontAwesomeIcon icon={faLocationCrosshairs} /></span> <span>GPS Tracking / Anti-Theft</span></p>
-                        <p>Our designed designs bicycle is now with GPS Tracking and Anti-Theft protection.</p>
+                    <div>
+                        <p> <span><FontAwesomeIcon icon={faCloudSunRain} /></span> <span>Best Deals With Lowest Pricing</span></p>
+                        <p>Our prices are competitive and fair. There are no surprise bills. Any unexpected or additional expenses must be pre-approved by you. That’s how we would like to be treated, and that is how our clients are treated.</p>
+                    </div>
+
+                    <div>
+                        <p> <span><FontAwesomeIcon icon={faLocationCrosshairs} /></span> <span>Highly Professional Staff</span></p>
+                        <p>We have worked with select casinos and state agencies for many years. Their rule, if we miss a deadline, we are out. Period. They have some of the tightest turnarounds in the business and we have never missed a single one.</p>
                     </div>
                     <div>
-                        <p> <span><FontAwesomeIcon icon={faHeart} /></span> <span>Sustainable Practices</span></p>
-                        <p>Sustainability practices are incorporated into our curriculum as we are committed to protecting our environment to ensure a sustainable future for our children.</p>
+                        <p> <span><FontAwesomeIcon icon={faHeart} /></span> <span>Creativity</span></p>
+                        <p>We bring our diverse background of advertising, design, branding, public relations, research and strategic planning to work for your company. Not only will your materials look great they will get results.</p>
                     </div>
                     <div>
-                        <p> <span><FontAwesomeIcon icon={faUsers} /></span> <span>For All Age Group</span></p>
-                        <p>We provide our best to give best product and service for all age group. we also provide all types of featured bike</p>
+                        <p> <span><FontAwesomeIcon icon={faTruckFast} /></span> <span>Quick Shipment</span></p>
+                        <p>We delivered your order in the shortest time anywhere in the world</p>
                     </div>
                     <div>
-                        <p> <span><FontAwesomeIcon icon={faPersonBiking} /></span> <span>Sport Bicycle</span></p>
-                        <p>If speed is the name of your game, then you need a bike that's nimble and agile and built to go fast. Introducing the 700c women's volar 1400, a speedy, light road bike that's sure to quench your need for speed. </p>
+                        <p> <span><FontAwesomeIcon icon={faPersonBiking} /></span> <span>Award-Winning</span></p>
+                        <p>We have won the international Communicator’s Award on behalf of our clients six times, chosen from over 6000 entries. Work with us, and you will work with seasoned professionals, vigilant of deadlines, and committed to exceeding client expectations.</p>
                     </div>
                     <div>
                         <p> <span><FontAwesomeIcon icon={faChildren} /></span> <span>Special Kids Bike</span></p>
@@ -60,9 +43,9 @@ const Feature = () => {
                         <p>World's first shaft transmission (no chain) bike, has magnesium alloy wheels and puncture proof tyres to ensure hassle free rides.</p>
                     </div>
                     <div>
-                        <p> <span><FontAwesomeIcon icon={faUsersGear} /></span> <span>Exceptional Support</span></p>
+                        <p> <span><FontAwesomeIcon icon={faUsers} /></span> <span> 24/7 Customer Support</span></p>
                         <p>We Provide 24/7 customer service to give you the best service. Our experienced stuff will is always ready to give you best support</p>
-                    </div> */}
+                    </div>
                 </div>
             </div>
 

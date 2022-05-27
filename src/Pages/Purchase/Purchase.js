@@ -13,8 +13,8 @@ const Purchase = () => {
     const navigate = useNavigate()
 
     const [user, loading] = useAuthState(auth)
-    console.log(user)
-    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const { data: tool, isLoading } = useQuery('tool', () => fetch(`http://localhost:5000/tools/${id}`)
         .then(res => res.json()))
@@ -25,7 +25,7 @@ const Purchase = () => {
 
     const { name, img, description, price, available, minimumOrderQuantity } = tool
 
-    const onSubmit = (data, e) => {
+    const onSubmit = data => {
 
         const booking = {
             customerName: user.displayName,
@@ -52,7 +52,7 @@ const Purchase = () => {
                 console.log(result)
             });
         toast(`Your booking for ${name} is placed successfully`)
-        e.target.reset();
+        reset();
         navigate('/')
     };
 

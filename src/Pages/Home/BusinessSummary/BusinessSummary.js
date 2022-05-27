@@ -5,7 +5,7 @@ import './BusinessSummary.css'
 
 const BusinessSummary = () => {
     return (
-        <div>
+        <div className='bg-grey-100 p-10'>
             <h1 className='text-2xl uppercase text-primary font-bold text-center'>Millions of Client Trust us</h1>
             {/* <p className='text-center'>Customer satisfaction is our happiness</p> */}
             <div className='flex justify-center'>
