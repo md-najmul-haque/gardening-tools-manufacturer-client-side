@@ -24,22 +24,23 @@ const Navbar = () => {
 
     const menuItem = <>
         <li><Link to='/'>Home</Link></li>
+        {
+            user && <li><Link to='/dashboard'>Dashboard</Link></li>
+        }
+
         <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/portfolio'>Portfolio</Link></li>
+
         {
-            user && <>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
-                <li><Link to=''>{user?.displayName}</Link></li>
-            </>
+            user && <li><Link to=''>{user?.displayName}</Link></li>
         }
-        {/* <p className='pt-3'>{user?.displayName}</p> */}
         {
             user ? <button onClick={handleSignOut} class="btn btn-ghost">Sign Out</button> : <li><Link to='/login'>Login</Link></li>
         }
 
     </>
     return (
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-200">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">

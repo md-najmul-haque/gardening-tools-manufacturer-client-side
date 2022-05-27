@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useProducts from '../../../hooks/useProducts';
 import Tool from '../Tool/Tool';
 
 const Tools = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/tools`)
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+
+    const [products] = useProducts()
+
     return (
         <div className='py-10'>
             <h2 className='text-3xl text-bold text-center'>Our Products</h2>
