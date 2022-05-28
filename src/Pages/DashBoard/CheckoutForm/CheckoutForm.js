@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
     CardElement,
-    Elements,
     useStripe,
     useElements,
 } from '@stripe/react-stripe-js';
@@ -58,6 +57,7 @@ const CheckoutForm = ({ booking }) => {
         setCardError(error?.message || "")
         setSuccess('');
         setProcessing(true)
+
         // confirm card payment
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,

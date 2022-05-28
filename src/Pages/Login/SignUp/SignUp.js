@@ -51,8 +51,8 @@ const SignUp = () => {
 
     return (
         <div className=' flex justify-center items-center h-screen'>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
                     <h2 className="text-center text-2xl font-bold">Sign Up</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,7 +73,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs">
-                            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("email", {
+                            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" {...register("email", {
                                 required: {
                                     value: true,
                                     message: 'Email is required'
@@ -91,7 +91,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs">
-                            <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs" {...register("password", {
+                            <input type="password" placeholder="Type here" className="input input-bordered w-full max-w-xs" {...register("password", {
                                 required: {
                                     value: true,
                                     message: 'Password is required'
@@ -110,14 +110,14 @@ const SignUp = () => {
 
                         {errorMessage}
 
-                        <input type="submit" class="btn w-full btn-primary mt-5" value='Sign Up' />
+                        <input type="submit" className="btn w-full btn-primary mt-5" value='Sign Up' />
 
                     </form>
                     <small><span> Already have an account?</span> <Link className='text-primary' to='/login'>Login</Link ></small>
 
-                    <div class="divider">or</div>
+                    <div className="divider">or</div>
 
-                    <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary">Continue with Google</button>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary">Continue with Google</button>
                 </div>
             </div>
         </div>

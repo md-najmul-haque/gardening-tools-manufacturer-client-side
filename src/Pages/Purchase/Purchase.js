@@ -58,14 +58,14 @@ const Purchase = () => {
 
     return (
         <div className='shadow-xl bg-white'>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
-                    <div class="card w-96">
-                        <figure class="px-10 pt-10">
-                            <img className='w-6/12' src={img} alt="Shoes" class="rounded-xl" />
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
+                    <div className="card w-96">
+                        <figure className="px-10 pt-10">
+                            <img className='w-6/12' src={img} alt="Shoes" className="rounded-xl" />
                         </figure>
-                        <div class="card-body items-center text-center">
-                            <h2 class="card-title">{name}</h2>
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title">{name}</h2>
                             <p>{description}</p>
                             <p>Price:$ {price} </p>
                             <p>MOQ: {minimumOrderQuantity} pcs</p>
@@ -74,7 +74,7 @@ const Purchase = () => {
 
                     </div>
 
-                    <div class="card-body w-96">
+                    <div className="card-body w-96">
                         <h2 className="text-center text-2xl font-bold">Place Your Order!</h2>
 
                         <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
@@ -92,7 +92,7 @@ const Purchase = () => {
                                 <input
                                     type="text"
                                     placeholder="Type here"
-                                    class="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered w-full max-w-xs"
                                     value={user?.email}
                                     disabled
                                     {...register("email")} />
@@ -186,7 +186,7 @@ const Purchase = () => {
                                 </label>
                             </div>
 
-                            <input type="submit" class="btn w-full btn-primary text-white" value='Place Order' />
+                            <input type="submit" className="btn w-full btn-primary text-white" value='Place Order' />
                             {/*  disabled={minimumOrderQuantity > orderQuantity || available < orderQuantity} */}
                         </form>
 

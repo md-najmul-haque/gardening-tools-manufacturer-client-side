@@ -7,7 +7,7 @@ const NotFound = () => {
         <div className='flex justify-center py-10'>
             <div>
                 <img src={notFound} alt="" />
-                <Link to='/' class="btn btn-outline btn-primary flex justify-center">Back to Home</Link>
+                <Link to='/' className="btn btn-outline btn-primary flex justify-center">Back to Home</Link>
             </div>
         </div>
     );

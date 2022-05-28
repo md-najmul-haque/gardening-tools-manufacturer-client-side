@@ -14,8 +14,8 @@ const ManageOrders = () => {
 
     return (
 
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
 
                 <thead>
                     <tr>
@@ -36,8 +36,8 @@ const ManageOrders = () => {
                             <td></td>
                             <td>{
                                 <div>
-                                    <button class="btn btn-primary btn-xs text-white mr-2">Payment</button>
-                                    <button class="btn  btn-primary btn-xs text-white">Cancel</button>
+                                    <button className="btn btn-primary btn-xs text-white mr-2">Payment</button>
+                                    <button className="btn  btn-primary btn-xs text-white">Cancel</button>
                                 </div>
                             }</td>
                         </tr>)

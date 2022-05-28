@@ -35,8 +35,8 @@ const MyOrders = () => {
 
     return (
 
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
 
                 <thead>
                     <tr>
@@ -59,16 +59,16 @@ const MyOrders = () => {
                             <td>$ {booking.orderQuantity * booking.price}</td>
                             <td>{
                                 <div>
-                                    {!booking.paid && <Link to={`/dashboard/payment/${booking._id}`} class="btn btn-primary btn-xs text-white mr-2">Payment</Link>}
+                                    {!booking.paid && <Link to={`/dashboard/payment/${booking._id}`} className="btn btn-primary btn-xs text-white mr-2">Payment</Link>}
                                     {booking.paid &&
                                         <>
-                                            <span class="text-success mr-2">Paid</span>
+                                            <span className="text-success mr-2">Paid</span>
                                             Transaction Id: <span className='text-success'>{booking.transactionId}</span>
                                         </>
                                     }
 
                                     {
-                                        !booking.paid ? <label for="cancel-order" onClick={() => setBooking(booking)} class="btn  btn-primary btn-xs text-white">Cancel</label> : ''
+                                        !booking.paid ? <label htmlFor="cancel-order" onClick={() => setBooking(booking)} className="btn  btn-primary btn-xs text-white">Cancel</label> : ''
                                     }
 
 

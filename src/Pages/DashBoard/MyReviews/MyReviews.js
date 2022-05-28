@@ -43,10 +43,10 @@ const MyReviews = () => {
 
     return (
         <div className='shadow-xl bg-white'>
-            <div class="hero min-h-screen bg-base-100">
-                <div class="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
+            <div className="hero min-h-screen bg-base-100">
+                <div className="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
 
-                    <div class="card-body w-96">
+                    <div className="card-body w-96">
                         <h2 className="text-center text-2xl font-bold text-primary mb-2">Add Your Reviews!</h2>
 
                         <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
@@ -114,7 +114,7 @@ const MyReviews = () => {
                                     {errors.number?.type === 'max' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
                                 </label>
                             </div>
-                            <input type="submit" class="btn w-full btn-primary" value='Publish' />
+                            <input type="submit" className="btn w-full btn-primary" value='Publish' />
 
                         </form>
 

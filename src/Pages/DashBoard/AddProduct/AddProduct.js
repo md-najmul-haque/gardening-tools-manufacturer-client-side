@@ -56,10 +56,10 @@ const AddProduct = () => {
 
     return (
 
-        <div class="hero">
-            <div class="hero-content flex-col lg:flex-row justify-start">
+        <div className="hero">
+            <div className="hero-content flex-col lg:flex-row justify-start">
 
-                <div class="card-body w-96">
+                <div className="card-body w-96">
                     <h2 className="text-center text-2xl font-bold text-primary mb-2">Add New Products!</h2>
 
                     <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
@@ -160,7 +160,7 @@ const AddProduct = () => {
                             </label>
                         </div>
 
-                        <input type="submit" class="btn w-full btn-primary text-white max-w-xs" value='Add Product' />
+                        <input type="submit" className="btn w-full btn-primary text-white max-w-xs" value='Add Product' />
 
                     </form>
 
