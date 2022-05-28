@@ -47,7 +47,7 @@ const ContactUs = () => {
 
                     <div className="card-body flex justify-center items-center">
                         <div>
-                            <h2 className="card-title text-2xl font-bolt text-white">Happy to help!</h2>
+                            <h2 className="card-title text-3xl mb-2 font-bolt text-white">Happy to help!</h2>
                             <p className='text-white'>Feel free to contact with us. Hope, we will get back to you within 24 hours. Gardening Plus team will give free consultancy for you.
                             </p>
                         </div>
@@ -87,8 +87,6 @@ const ContactUs = () => {
                                 }
                             })} />
 
-
-
                         <input
                             type="text"
                             placeholder="Enter Phone Number"
@@ -123,10 +121,8 @@ const ContactUs = () => {
                             })} />
 
 
-
                         <button type="submit" className="btn max-w-xs btn-primary  bg-gradient-to-r from-secondary to-primary  text-white">Submit Request <span className='ml-2'><FontAwesomeIcon icon={faArrowRightLong} /></span></button>
 
-                        {/* <input type="submit" className="btn max-w-xs btn-primary text-white" value='Submit Request <span><FontAwesomeIcon icon={faCoffee} /></span> ' /> */}
                     </form>
 
                 </div>
