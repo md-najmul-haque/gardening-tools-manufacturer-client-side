@@ -62,7 +62,7 @@ const Purchase = () => {
                 <div className="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
                     <div className="card w-96">
                         <figure className="px-10 pt-10">
-                            <img className='w-6/12' src={img} alt="Shoes" className="rounded-xl" />
+                            <img className='w-6/12 rounded-xl' src={img} alt="" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{name}</h2>

@@ -40,13 +40,9 @@ const Login = () => {
     }
     if (error || gError) {
         return (
-
-            errorMessage = <p> {gError?.message}</p>
-
+            errorMessage = <p className='text-red-600 text-center py-2'> {error?.message || gError?.message}</p>
         );
     }
-
-
 
     return (
         <div className=' flex justify-center items-center h-screen'>
@@ -91,11 +87,12 @@ const Login = () => {
                             </label>
                         </div>
 
-                        {errorMessage}
-
                         <input type="submit" className="btn w-full btn-primary mt-5" value='login' />
 
                     </form>
+
+                    {errorMessage}
+
                     <small><span> New in Gardening Plus?</span> <Link className='text-primary' to='/signup'>Create New Account</Link ></small>
 
                     <div className="divider">or</div>

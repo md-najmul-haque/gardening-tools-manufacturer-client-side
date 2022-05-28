@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -22,10 +22,15 @@ const SignUp = () => {
     const navigate = useNavigate()
     const [token] = useToken(user || gUser)
 
+    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    }, [navigate, token])
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password)
-        // setDisplayName(data.name)
         await updateProfile({ displayName: data.name });
         console.log(data)
     };
@@ -38,16 +43,10 @@ const SignUp = () => {
     if (error || gError || updateError) {
         return (
 
-            errorMessage = <p> {gError?.message}</p>
+            errorMessage = <p className='text-red-600 text-center py-2'> {error?.message || gError?.message || updateError?.message}</p>
 
         );
     }
-
-    if (token) {
-        console.log(gUser)
-        navigate('/')
-    }
-
 
     return (
         <div className=' flex justify-center items-center h-screen'>
@@ -108,11 +107,10 @@ const SignUp = () => {
                             </label>
                         </div>
 
-                        {errorMessage}
-
                         <input type="submit" className="btn w-full btn-primary mt-5" value='Sign Up' />
 
                     </form>
+                    {errorMessage}
                     <small><span> Already have an account?</span> <Link className='text-primary' to='/login'>Login</Link ></small>
 
                     <div className="divider">or</div>
