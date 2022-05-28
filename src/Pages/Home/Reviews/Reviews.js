@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Review from '../Review/Review';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import './reviews.css'
 
 
 
@@ -21,12 +22,12 @@ const Reviews = (props) => {
             slidesToSlide: 1
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2,
+            breakpoint: { max: 1024, min: 600 },
+            items: 1,
             slidesToSlide: 1
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 600, min: 0 },
             items: 1,
             slidesToSlide: 1
         }
@@ -35,8 +36,8 @@ const Reviews = (props) => {
     return (
 
         <div className='my-10 bg-gray-50 py-10' >
-            <h1 className='zoom-in text-xl text-center font-bold text-primary'>TESTIMONIALS</h1>
-            <h2 className='text-4xl text-center'>Our Customers <span className='font-bold'>Are Saying?</span></h2>
+            <h1 className='zoom-in text-4xl text-center font-bold text-primary mb-2'>TESTIMONIALS</h1>
+            <h2 className='text-4xl text-center mb-10'>Our Customers <span className='font-bold'>Are Saying?</span></h2>
 
             <Carousel
                 swipeable={false}
@@ -55,6 +56,8 @@ const Reviews = (props) => {
                 deviceType={props.deviceType}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
+
+                className='bg-transparent'
             >
 
                 {

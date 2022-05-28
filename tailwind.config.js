@@ -8,7 +8,7 @@ module.exports = {
       {
         gardeningtheme: {
           primary: "#6ca12b",
-          secondary: "#84CC16",
+          secondary: "#365314",
           accent: "#76a246",
           neutral: "#3d4451",
           "base-100": "#ffffff",

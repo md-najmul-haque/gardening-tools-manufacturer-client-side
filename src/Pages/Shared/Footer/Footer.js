@@ -41,9 +41,6 @@ const Footer = () => {
                         <input type="text" placeholder="username@site.com" class="input input-bordered w-full pr-16" />
                         <button class="btn absolute top-0 right-0 rounded-l-none">Subscribe</button>
                     </div>
-                    {/* <div>
-                        <p>Follow Us: <Link to=''><FontAwesomeIcon icon={faCloudSunRain} /></Link></p>
-                    </div> */}
                 </div>
             </div>
         </footer >

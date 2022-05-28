@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const Tool = ({ product }) => {
     const { _id, name, img, description, price, available, minimumOrderQuantity } = product
@@ -18,7 +20,7 @@ const Tool = ({ product }) => {
                     <p>MOQ: {minimumOrderQuantity} pcs</p>
                     <p>Available Quantity: {available} pcs</p>
                     <div class="card-actions">
-                        <Link to={`/purchase/${_id}`} product={product} class="btn btn-primary text-white">Buy Now</Link>
+                        <Link to={`/purchase/${_id}`} product={product} class="btn btn-primary bg-gradient-to-r from-secondary to-primary  text-white">Buy Now <FontAwesomeIcon className='ml-2' icon={faArrowRightLong} /></Link>
                     </div>
                 </div>
             </div>

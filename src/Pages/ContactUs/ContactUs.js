@@ -56,9 +56,9 @@ const ContactUs = () => {
 
     return (
 
-        <div class="hero contact-section min-h-screen" >
-            <div class="hero-content w-11/12 shadow-2xl bg-base-100 flex-col lg:flex-row mx-auto">
-                <div data-aos="zoom-in-right" data-aos-duration="1500" class="card w-96 shadow-xl image-full">
+        <div class="hero contact-section min-h-fit pt-20 pb-40" >
+            <div data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" class="hero-content w-11/12 shadow-2xl bg-base-100 flex-col lg:flex-row mx-auto">
+                <div class="card w-96 shadow-xl image-full">
                     <figure><img src={contactTool3} alt="Shoes" /></figure>
 
                     <div class="card-body flex justify-center items-center">
@@ -74,7 +74,7 @@ const ContactUs = () => {
 
                 </div>
 
-                <div data-aos="zoom-in-left" data-aos-duration="1500" class="card-body w-96">
+                <div class="card-body w-96">
                     <h2 className="text-3xl text-primary font-bold">Request A Quote</h2>
                     <p>We ensure our customers receive the best quality prices and service. Feel free to mail us </p>
 

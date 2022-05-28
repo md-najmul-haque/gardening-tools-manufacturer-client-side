@@ -22,8 +22,9 @@ import RequireAdmin from './Pages/Login/RequireAdmin/RequireAdmin';
 import Payment from './Pages/DashBoard/Payment/Payment';
 import Blogs from './Pages/Blogs/Blogs';
 import Portfolio from './Pages/Portfolio/Portfolio';
-import ContactUs from './Pages/ContactUs/ContactUs';
 import "react-multi-carousel/lib/styles.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 function App() {
@@ -80,8 +81,8 @@ function App() {
   );
 }
 
-<script>
-  AOS.init();
-</script>
+
+AOS.init();
+
 
 export default App;

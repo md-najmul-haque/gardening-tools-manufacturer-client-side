@@ -10,12 +10,13 @@ const WhyChooseUs = () => {
     return (
         <div>
 
-            <div class="hero min-h-fit py-20">
+            <div data-aos="fade-right" data-aos-easing="linear"
+                data-aos-duration="1000" class="hero min-h-fit py-20">
 
                 <div class="hero-content shadow-xl flex-col lg:flex-row">
-                    <img data-aos="zoom-in-right" data-aos-duration="1500" src={photo2} class="max-w-xl rounded-lg shadow-2xl" alt='' />
+                    <img src={photo2} class="max-w-xl rounded-lg shadow-2xl" alt='' />
 
-                    <div data-aos="zoom-in-left" data-aos-duration="1500" className='lg: ml-10'>
+                    <div className='lg: ml-10'>
                         <div class="indicator">
                             <span class="indicator-item badge badge-error bg-red-500 text-white p-3">30% off</span>
                             <div class="grid place-items-center text-3xl  lg:text-4xl font-bold">Hot Deal: Lowest Wholesale Rate</div>
@@ -38,7 +39,7 @@ const WhyChooseUs = () => {
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             </div>
                         </div>
-                        <Link to='/' class="btn btn-primary ml-6 my-3 text-white">Book Now <FontAwesomeIcon className='ml-2' icon={faArrowRightLong} /></Link>
+                        <Link to='/' class="btn btn-primary bg-gradient-to-r from-secondary to-primary ml-6 my-3 text-white">Book Now <FontAwesomeIcon className='ml-2' icon={faArrowRightLong} /></Link>
                     </div>
                 </div>
             </div>
