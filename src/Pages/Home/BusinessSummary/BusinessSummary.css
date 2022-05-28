@@ -4,3 +4,14 @@
     background-color: #84CC16;
 
 }
+
+.business-summary-section {
+    background-image: url(../../../assets/bgImage/11.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    background-color: hsla(0, 0%, 0%, 0.594);
+    background-blend-mode: multiply;
+
+}

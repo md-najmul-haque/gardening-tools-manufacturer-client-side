@@ -1,46 +1,51 @@
-import { faArrowTrendUp, faGlobe, faPaperPlane, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faList, faTruckFast, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './BusinessSummary.css'
 
 const BusinessSummary = () => {
     return (
-        <div className='bg-grey-100 p-10'>
-            <h1 className='text-2xl uppercase text-primary font-bold text-center'>Millions of Client Trust us</h1>
-            {/* <p className='text-center'>Customer satisfaction is our happiness</p> */}
-            <div className='flex justify-center'>
-                <div class="section-underline"></div>
-            </div>
-            <div class="stats shadow flex justify-around">
-                <div class="stat">
-                    <FontAwesomeIcon className='stat-value text-secondary' icon={faGlobe} />
-                    <div class="stat-value text-secondary">132</div>
-                    <div class="stat-title">Countries</div>
+
+        <div className='bg-red-500 business-summary-section min-h-fit py-10'>
+            <h1 className='text-2xl lg:text-5xl uppercase mb-3 text-white font-bold text-center'>Millions of Client Trust us</h1>
+            <p className='text-center text-xl lg:text-3xl mb-10 lg:mb-24 font-bold'> <span className='text-white'>World Largest Gardening Tools </span><span className='text-red-600'>Manufacturing Industries.</span></p>
+
+            <div class=" shadow bg-transparent flex flex-col lg:flex-row lg:justify-around pb-5 lg:pb-10">
+                <div className='mx-auto'>
+                    <div class="stat text-white">
+                        <FontAwesomeIcon className='stat-value text-white border rounded p-4' icon={faCalendarDays} />
+                        <div class="stat-value text-red-600">28</div>
+                        <div class="text-white">Years Of Experience</div>
+                    </div>
                 </div>
 
-                <div class="stat">
-
-                    <FontAwesomeIcon className='stat-value text-secondary' icon={faPaperPlane} />
-
-                    <div class="stat-value text-secondary">3.6M+</div>
-                    <div class="stat-title">Complete Projects</div>
-
+                <div className='width-100% mx-auto'>
+                    <div class="stat">
+                        <FontAwesomeIcon className='stat-value text-white border rounded p-4' icon={faList} />
+                        <div class="stat-value text-red-600">3.6M+</div>
+                        <div class="text-white">Complete Projects</div>
+                    </div>
                 </div>
 
-                <div class="stat">
-
-                    <FontAwesomeIcon className='stat-value text-secondary' icon={faUsers} />
-                    <div class="stat-value text-secondary">2.5K+</div>
-                    <div class="stat-title">Happy Clients</div>
+                <div className='width-100% mx-auto'>
+                    <div class="stat">
+                        <FontAwesomeIcon className='stat-value text-white border rounded p-4' icon={faUsers} />
+                        <div class="stat-value text-red-600">2.5K+</div>
+                        <div class="text-white">Happy Clients</div>
+                    </div>
                 </div>
 
-                <div class="stat">
-                    <div class="stat-value  text-secondary">86%</div>
-                    <div class="stat-title">Tasks done</div>
+                <div className='mx-auto'>
+                    <div class="stat">
+                        <FontAwesomeIcon className='stat-value text-white border rounded p-4' icon={faTruckFast} />
+                        <div class="stat-value text-red-600">86%</div>
+                        <div class="text-white">Tasks done</div>
+                    </div>
                 </div>
 
             </div>
         </div>
+
     );
 };
 
