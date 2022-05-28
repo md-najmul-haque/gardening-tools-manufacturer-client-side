@@ -19,7 +19,7 @@ const CheckoutForm = ({ booking }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://serene-wave-89546.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ booking }) => {
                 transactionId: paymentIntent.id
 
             }
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://serene-wave-89546.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

@@ -33,7 +33,7 @@ const AddProduct = () => {
                         available: data.available,
                     }
 
-                    fetch(`http://localhost:5000/tools`, {
+                    fetch(`https://serene-wave-89546.herokuapp.com/tools`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

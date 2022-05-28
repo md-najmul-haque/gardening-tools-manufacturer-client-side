@@ -14,7 +14,7 @@ const ManageProduct = () => {
     const [product, setProduct] = useState(null)
     const email = user.email;
 
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/tools`)
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`https://serene-wave-89546.herokuapp.com/tools`)
         .then(res => res.json()))
 
     if (loading || isLoading) {

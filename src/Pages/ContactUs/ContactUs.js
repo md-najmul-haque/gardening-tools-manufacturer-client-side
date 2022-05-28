@@ -21,7 +21,7 @@ const ContactUs = () => {
             address: data.address,
             message: data.message
         }
-        fetch(`http://localhost:5000/contact`, {
+        fetch(`https://serene-wave-89546.herokuapp.com/contact`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -5,7 +5,7 @@ const ManageProductModal = ({ product, setProduct, refetch }) => {
     const { _id, name, img, description, price, available, minimumOrderQuantity } = product
 
     const deleteProduct = id => {
-        fetch(`http://localhost:5000/tools/${_id}`, {
+        fetch(`https://serene-wave-89546.herokuapp.com/tools/${_id}`, {
             method: 'delete',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

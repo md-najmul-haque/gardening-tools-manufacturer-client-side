@@ -12,7 +12,7 @@ const MyProfile = () => {
     const [user, loading] = useAuthState(auth)
     const email = user.email
 
-    const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`http://localhost:5000/user?email=${email}`)
+    const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`https://serene-wave-89546.herokuapp.com/user?email=${email}`)
         .then(res => {
             return res.json()
         }))
@@ -51,7 +51,7 @@ const MyProfile = () => {
                     phone: data.phone,
                     img: image
                 }
-                fetch(`http://localhost:5000/user/${email}`, {
+                fetch(`https://serene-wave-89546.herokuapp.com/user/${email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'

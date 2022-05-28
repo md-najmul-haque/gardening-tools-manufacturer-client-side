@@ -16,7 +16,7 @@ const Purchase = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: tool, isLoading } = useQuery('tool', () => fetch(`http://localhost:5000/tools/${id}`)
+    const { data: tool, isLoading } = useQuery('tool', () => fetch(`https://serene-wave-89546.herokuapp.com/tools/${id}`)
         .then(res => res.json()))
 
     if (loading || isLoading) {
@@ -39,7 +39,7 @@ const Purchase = () => {
             orderQuantity: data.number
 
         }
-        fetch(`http://localhost:5000/booking`, {
+        fetch(`https://serene-wave-89546.herokuapp.com/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

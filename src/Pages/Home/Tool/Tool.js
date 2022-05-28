@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +9,7 @@ const Tool = ({ product }) => {
         <div>
             <div data-aos="zoom-in-up" data-aos-duration="1500" className="card w-96 bg-base-100 shadow-xl mx-auto">
                 <figure className="px-10 pt-10">
-                    <img className='w-6/12' src={img} alt="Shoes" className="rounded-xl" />
+                    <img className='w-6/12 rounded-xl' src={img} alt="Shoes" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{name}</h2>
@@ -28,5 +26,5 @@ const Tool = ({ product }) => {
     );
 };
 
-AOS.init();
+
 export default Tool;

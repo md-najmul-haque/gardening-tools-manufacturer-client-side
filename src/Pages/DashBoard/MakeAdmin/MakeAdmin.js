@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import UserRow from '../UserRow/UserRow';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`http://localhost:5000/users`, {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`https://serene-wave-89546.herokuapp.com/users`, {
         method: "GET",
         headers: { authorization: `Bearer, ${localStorage.getItem('accessToken')}` }
 
