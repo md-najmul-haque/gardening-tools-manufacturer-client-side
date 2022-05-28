@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ManageProductModal = ({ product, setProduct, refetch }) => {
     const { _id, name, img, description, price, available, minimumOrderQuantity } = product
-    const navigate = useNavigate()
 
     const deleteProduct = id => {
         fetch(`http://localhost:5000/tools/${_id}`, {
@@ -32,7 +30,7 @@ const ManageProductModal = ({ product, setProduct, refetch }) => {
 
                     <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                         <figure className="px-10 pt-10">
-                            <img className='w-6/12' src={img} alt="Shoes" className="rounded-xl" />
+                            <img className='w-6/12 rounded-xl' src={img} alt="Shoes" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{name}</h2>
@@ -41,7 +39,7 @@ const ManageProductModal = ({ product, setProduct, refetch }) => {
                             <p>MOQ: {minimumOrderQuantity} pcs</p>
                             <p>Available Quantity: {available} pcs</p>
                         </div>
-                        <div className="modal-action">
+                        <div className="modal-action flex justify-center mb-3">
                             <label onClick={() => deleteProduct(_id)} htmlFor="cancel-order" className="btn btn-error">Delete Product</label>
                             <label htmlFor="manage-order" className="btn btn-error">Keep Product</label>
                         </div>

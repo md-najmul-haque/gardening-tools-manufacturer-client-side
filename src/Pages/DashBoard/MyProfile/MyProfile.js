@@ -75,7 +75,7 @@ const MyProfile = () => {
             <div className="hero-content flex flex-col lg:flex-row justify-center">
                 <div className="card w-96">
                     <figure className="px-10 pt-10">
-                        <img className='w-6/12' src={userProfile.img ? userProfile.img : defaultUser} alt="" className="rounded" />
+                        <img className='w-6/12 rounded' src={userProfile.img ? userProfile.img : defaultUser} alt="" />
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">Name: {userProfile?.customerName}</h2>
