@@ -4,8 +4,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './reviews.css'
 
-
-
 const Reviews = (props) => {
     const [reviews, setReviews] = useState([])
 
