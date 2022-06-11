@@ -56,7 +56,7 @@ const ContactUs = () => {
                 </div>
 
                 <div className="card-body w-96">
-                    <h2 className="text-3xl text-primary font-bold">Request A Quote</h2>
+                    <h2 className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary font-bold">Request A Quote</h2>
                     <p>We ensure our customers receive the best quality prices and service. Feel free to mail us </p>
 
                     <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>

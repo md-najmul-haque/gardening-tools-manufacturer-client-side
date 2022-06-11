@@ -51,7 +51,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/'><div className='flex items-center'>
-                    <span className='w-11 '><img src={gardeningLogo} alt="" /> </span><span className="btn btn-ghost normal-case text-secondary font-bold text-xl pl-2">Gardening Plus</span></div>
+                    <span className='w-11 '><img src={gardeningLogo} alt="" /> </span><span className="btn btn-ghost normal-case text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary font-bold text-xl pl-2">Gardening Plus</span></div>
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
