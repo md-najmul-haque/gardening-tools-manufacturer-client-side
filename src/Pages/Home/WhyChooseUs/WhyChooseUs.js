@@ -10,7 +10,7 @@ const WhyChooseUs = () => {
     return (
 
         <div data-aos="fade-right" data-aos-easing="linear"
-            data-aos-duration="1000" className="hero min-h-fit px-12">
+            data-aos-duration="1000" className="hero min-h-fit my-8 lg:my-16">
 
             <div className="hero-content shadow-xl flex-col lg:flex-row">
                 <img src={photo2} className="max-w-sm lg:max-w-xl rounded-lg mx-auto shadow-2xl" alt='' />

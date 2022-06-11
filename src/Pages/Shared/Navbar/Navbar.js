@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
+import gardeningLogo from '../../../assets/logo/gardeningLogo.png'
 
 const Navbar = () => {
 
@@ -39,7 +40,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar sticky-top bg-base-100">
+        <div className="navbar sticky-top bg-base-100 px-3">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -49,7 +50,9 @@ const Navbar = () => {
                         {menuItem}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-secondary font-bold text-xl">Gardening Plus</Link>
+                <Link to='/'><div className='flex items-center'>
+                    <span className='w-11 '><img src={gardeningLogo} alt="" /> </span><span className="btn btn-ghost normal-case text-secondary font-bold text-xl pl-2">Gardening Plus</span></div>
+                </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
