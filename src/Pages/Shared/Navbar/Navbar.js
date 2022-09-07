@@ -40,7 +40,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar sticky-top bg-base-100 px-3">
+        <div className="navbar bg-black  text-white font-medium absolute px-3 top-0 left-0 z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/'><div className='flex items-center'>
-                    <span className='w-11 '><img src={gardeningLogo} alt="" /> </span><span className="btn btn-ghost normal-case text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary font-bold text-xl pl-2">Gardening Plus</span></div>
+                    <span className='w-11 '><img src={gardeningLogo} alt="" /> </span><span className="btn btn-ghost normal-case font-semibold text-xl pl-2">Gardening Plus</span></div>
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
