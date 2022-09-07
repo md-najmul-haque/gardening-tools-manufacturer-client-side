@@ -87,7 +87,7 @@ const Login = () => {
                             </label>
                         </div>
 
-                        <input type="submit" className="btn w-full btn-primary mt-5" value='login' />
+                        <input type="submit" className="btn w-full bg-gradient-to-r from-secondary to-primary text-white mt-5" value='login' />
 
                     </form>
 
@@ -97,7 +97,7 @@ const Login = () => {
 
                     <div className="divider">or</div>
 
-                    <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary">Continue with Google</button>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline text-primary hover:bg-gradient-to-r from-secondary to-primary hover:text-white">Continue with Google</button>
                 </div>
             </div>
         </div>
