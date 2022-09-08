@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init'
@@ -19,7 +19,9 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const [token] = useToken(user || gUser);
+    const [signInWithFacebook, fbUser, fbLoading, fbError] = useSignInWithFacebook(auth);
+
+    const [token] = useToken(user || gUser || fbUser);
     let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
@@ -35,10 +37,10 @@ const Login = () => {
 
     let errorMessage;
 
-    if (loading || gLoading) {
+    if (loading || gLoading || fbLoading) {
         return <Loading />
     }
-    if (error || gError) {
+    if (error || gError || fbError) {
         return (
             errorMessage = <p className='text-red-600 text-center py-2'> {error?.message || gError?.message}</p>
         );
@@ -98,6 +100,7 @@ const Login = () => {
                     <div className="divider">or</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline text-primary hover:bg-gradient-to-r from-secondary to-primary hover:text-white">Continue with Google</button>
+                    <button onClick={() => signInWithFacebook()} className="btn btn-outline text-primary hover:bg-gradient-to-r from-secondary to-primary hover:text-white">Continue with Facebook</button>
                 </div>
             </div>
         </div>

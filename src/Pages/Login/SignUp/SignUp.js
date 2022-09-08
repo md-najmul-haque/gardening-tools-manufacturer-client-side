@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -16,9 +16,10 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, fbUser, fbLoading, fbError] = useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const navigate = useNavigate()
-    const [token] = useToken(user || gUser)
+    const [token] = useToken(user || gUser || fbUser)
 
     useEffect(() => {
         if (token) {
@@ -35,10 +36,10 @@ const SignUp = () => {
 
     let errorMessage;
 
-    if (loading || gLoading || updating) {
+    if (loading || gLoading || fbLoading || updating) {
         return <Loading />
     }
-    if (error || gError || updateError) {
+    if (error || gError || fbError || updateError) {
         return (
 
             errorMessage = <p className='text-red-600 text-center py-2'> {error?.message || gError?.message || updateError?.message}</p>
@@ -114,6 +115,7 @@ const SignUp = () => {
                     <div className="divider">or</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline text-primary hover:bg-gradient-to-r from-secondary to-primary hover:text-white">Continue with Google</button>
+                    <button onClick={() => signInWithFacebook()} className="btn btn-outline text-primary hover:bg-gradient-to-r from-secondary to-primary hover:text-white">Continue with Facebook</button>
                 </div>
             </div>
         </div>
