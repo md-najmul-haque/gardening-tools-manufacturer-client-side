@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
+const colors = {
+    orange: '#FFBA5A',
+    grey: '#a9a9a9',
+}
 
 const MyReviews = () => {
-
     const [user, loading] = useAuthState(auth)
+    const [rating, setRating] = useState(0);
+    const [hoverValue, setHoverValue] = useState(undefined);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const stars = Array(5).fill(0);
+
+    const handleClick = (value) => {
+        setRating(value);
+    }
+    const handleMouseOver = (newHoverValue) => {
+        setHoverValue(newHoverValue);
+    }
+
+    const handleMouseLeave = () => {
+        setHoverValue(undefined);
+    }
 
     if (loading) {
         return <Loading />
@@ -42,86 +63,76 @@ const MyReviews = () => {
     };
 
     return (
-        <div className='shadow-xl bg-white'>
-            <div className="hero min-h-screen bg-base-100">
-                <div className="hero-content w-200 shadow-xl bg-base-100 flex-col lg:flex-row mx-auto">
+        <div className="w-96 lg:w-1/2 h-screen p-10 mx-auto">
 
-                    <div className="card-body w-96">
-                        <h2 className="text-center text-2xl font-bold text-primary mb-2">Add Your Reviews!</h2>
+            <h2 className="text-center text-2xl font-bold text-primary mb-2">Add Your Reviews!</h2>
 
-                        <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
-                            <div className="form-control w-full max-w-xs mb-2">
-                                <input
-                                    type="text"
-                                    placeholder="Your Name"
-                                    className="input input-bordered w-full max-w-xs"
-                                    value={user?.displayName}
-                                    disabled
-                                    {...register("name")} />
-                            </div>
+            <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="form-control w-full max-w-xs">
-                                <textarea
-                                    type="text"
-                                    placeholder="Write your review here"
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("feedback", {
-                                        required: {
-                                            value: true,
-                                            message: 'Your address is required'
-                                        }
-                                    })} />
-
-                                <label className="label">
-                                    {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors.review.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control w-full max-w-xs">
-                                <input
-                                    type="text"
-                                    placeholder="Country"
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("country", {
-                                        required: {
-                                            value: true,
-                                            message: 'Country is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.country?.type === 'required' && <span className="label-text-alt text-red-500">{errors.country.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control w-full max-w-xs">
-                                <input
-                                    type="number"
-                                    placeholder="Your rating from 1 to 5"
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("rating", {
-                                        min: {
-                                            value: 1,
-                                            message: "Sorry! You can't give rating less than 1"
-                                        },
-                                        max: {
-                                            value: 5,
-                                            message: `Sorry! You can't give rating more than 5`
-                                        }
-                                    })}
-                                />
-                                <label className="label">
-                                    {errors.number?.type === 'min' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                                    {errors.number?.type === 'max' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                                </label>
-                            </div>
-                            <input type="submit" className="btn w-full btn-primary" value='Publish' />
-
-                        </form>
-
+                <div className="avatar flex justify-center">
+                    <div className="w-24 mx-auto rounded-full ring ring-primary ring-offset-2">
+                        <img src={`${user?.photoURL ? user?.photoURL : 'https://i.pravatar.cc/300'}`} alt={`${user?.displayName}`} />
                     </div>
-
                 </div>
-            </div>
+                <h2 className="text-2xl text-center my-3 font-bold">{user?.displayName}</h2>
+
+                <div className="flex flex-row justify-center pb-3">
+                    {stars.map((_, index) => {
+                        return (
+                            <FontAwesomeIcon
+                                icon={faStar}
+                                key={index}
+                                size={24}
+                                onClick={() => handleClick(index + 1)}
+                                onMouseOver={() => handleMouseOver(index + 1)}
+                                onMouseLeave={handleMouseLeave}
+                                color={
+                                    (hoverValue || rating) > index ? colors.orange : colors.grey
+                                }
+                                style={{
+                                    marginRight: 10,
+                                    cursor: "pointer",
+                                }}
+                            />
+                        );
+                    })}
+                </div>
+
+                <div className="form-control w-full">
+                    <textarea
+                        type="text"
+                        placeholder="Write your review here"
+                        className="input input-bordered focus:border-primary focus:outline-primary h-24"
+                        {...register("feedback", {
+                            required: {
+                                value: true,
+                                message: 'Your address is required'
+                            }
+                        })} />
+
+                    <label className="label">
+                        {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors.review.message}</span>}
+                    </label>
+                </div>
+
+                <div className="form-control w-full">
+                    <input
+                        type="text"
+                        placeholder="Country"
+                        className="input input-bordered focus:border-primary focus:outline-primary"
+                        {...register("country", {
+                            required: {
+                                value: true,
+                                message: 'Country is required'
+                            }
+                        })} />
+                    <label className="label">
+                        {errors.country?.type === 'required' && <span className="label-text-alt text-red-500">{errors.country.message}</span>}
+                    </label>
+                </div>
+
+                <input type="submit" className="btn w-full btn-primary" value='Publish' />
+            </form>
         </div>
 
     );
