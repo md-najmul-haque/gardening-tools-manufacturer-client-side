@@ -21,6 +21,8 @@ const MyReviews = () => {
 
     const stars = Array(5).fill(0);
 
+    console.log(user)
+
     const handleClick = (value) => {
         setRating(value);
     }
@@ -40,9 +42,10 @@ const MyReviews = () => {
 
         const review = {
             name: user.displayName,
+            img: user?.photoURL,
             feedback: data.feedback,
             country: data.country,
-            rating: data.rating,
+            rating: rating,
         }
 
         fetch(`https://serene-wave-89546.herokuapp.com/reviews`, {
@@ -54,24 +57,28 @@ const MyReviews = () => {
         })
             .then(res => res.json())
             .then(result => {
-
-                console.log(result)
+                if (result.insertedId) {
+                    toast(`Thanks for your feedback.`)
+                } else {
+                    toast.error(`Ops! Internal Server Error. Please try after sometime.`)
+                }
             });
 
         e.target.reset();
-        toast(`Thanks for your feedback.`)
+
+
     };
 
     return (
         <div className="w-96 lg:w-1/2 h-screen p-10 mx-auto">
 
-            <h2 className="text-center text-2xl font-bold text-primary mb-2">Add Your Reviews!</h2>
+            <h2 className="text-center text-3xl font-semibold text-primary my-5">Add Your Reviews!</h2>
 
             <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="avatar flex justify-center">
                     <div className="w-24 mx-auto rounded-full ring ring-primary ring-offset-2">
-                        <img src={`${user?.photoURL ? user?.photoURL : 'https://i.pravatar.cc/300'}`} alt={`${user?.displayName}`} />
+                        <img src={`${user?.photoURL ? user?.photoURL : 'https://ibb.co/Wt6R05X'}`} alt='' />
                     </div>
                 </div>
                 <h2 className="text-2xl text-center my-3 font-bold">{user?.displayName}</h2>
