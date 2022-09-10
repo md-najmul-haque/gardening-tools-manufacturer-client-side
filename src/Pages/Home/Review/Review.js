@@ -15,7 +15,7 @@ const Review = ({ review }) => {
             data-aos-duration="1000"
             className="card w-96 bg-base-100 shadow-2xl mb-5 mx-auto">
             <div className="card-body items-center text-center">
-                <img style={{ width: 80 }} className='w-6/12' src={img ? img : defaultUser} alt="customer-img" />
+                <img style={{ width: 80 }} className='w-24 rounded-full ring ring-primary ring-offset-2' src={img ? img : defaultUser} alt="customer-img" />
                 <p className="card-title rounded-xl">{name}</p>
                 <p className='pt-2 h-[120px]'>{feedback}</p>
                 <div className='flex'>
