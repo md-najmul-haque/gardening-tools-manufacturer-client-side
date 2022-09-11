@@ -9,6 +9,7 @@ import gardeningLogo from '../../../assets/logo/gardeningLogo.png'
 const Navbar = () => {
 
     const [user, loading] = useAuthState(auth);
+    console.log(user)
 
     const navigate = useNavigate()
 
@@ -35,12 +36,25 @@ const Navbar = () => {
             user && <li><Link to=''>{user?.displayName}</Link></li>
         }
         {
-            user ? <button onClick={handleSignOut} className="btn btn-ghost">Sign Out</button> : <li><Link to='/login'>Login</Link></li>
+            user ? <>
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img src={`${user?.photoURL}`} alt='' />
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black text-white rounded-box w-52">
+                        <li><Link to='/dashboard/profile'>View Profile</Link></li>
+                        <li><Link onClick={handleSignOut} to='/'>Sign Out</Link></li>
+                    </ul>
+                </div>
+            </>
+                : <li><Link to='/login'>Login</Link></li>
         }
 
     </>
     return (
-        <div className="navbar bg-black  text-white font-medium absolute px-3 top-0 left-0 z-10">
+        <div className="navbar bg-black  text-white font-medium sticky px-3 top-0 z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">

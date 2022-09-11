@@ -5,6 +5,7 @@ import banner3 from '../../../assets/banner/banner3.jpg'
 
 const Banner = () => {
     return (
+
         <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
@@ -82,6 +83,7 @@ const Banner = () => {
                 <span className="visually-hidden">Next</span>
             </button>
         </div>
+
     );
 };
 
