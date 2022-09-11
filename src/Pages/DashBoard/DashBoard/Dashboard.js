@@ -14,7 +14,6 @@ const Dashboard = () => {
     }
 
     return (
-
         <div className="drawer drawer-mobile">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
@@ -23,7 +22,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                <ul className="menu p-10 overflow-y-auto w-64 bg-lime-900 text-white">
 
                     {
                         !admin && <>

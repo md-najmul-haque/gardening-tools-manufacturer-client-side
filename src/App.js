@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -28,6 +28,8 @@ import 'aos/dist/aos.css';
 
 
 function App() {
+  const { pathname } = useLocation()
+
   return (
     <div className="">
       <Navbar />
@@ -75,7 +77,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {!pathname.includes('dashboard') && <Footer />}
       <ToastContainer />
     </div>
   );
