@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
@@ -8,8 +8,8 @@ import defaultUser from '../../../assets/user/defaultUser.png'
 import { useQuery } from 'react-query';
 
 const MyProfile = () => {
-
     const [user, loading] = useAuthState(auth)
+    const [isEdit, setIsEdit] = useState(false);
     const email = user.email
 
     const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`https://serene-wave-89546.herokuapp.com/user?email=${email}`)
@@ -22,6 +22,11 @@ const MyProfile = () => {
     if (loading || isLoading) {
         return <Loading />
     }
+
+    const handleEdit = () => {
+        setIsEdit(true);
+    };
+
     const imageStorageKey = 'd90f0f7587defd256d8cd2cd85b0500d';
 
     const onSubmit = data => {
@@ -94,6 +99,23 @@ const MyProfile = () => {
                     <h2 className="text-primary text-2xl font-bold">Update Your Profile!</h2>
 
                     <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
+
+                        <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-3/4 lg:w-2/3 justify-center items-center">
+                            <div className="flex items-center bg-slate-200 w-full">
+                                <div className="avatar p-5 pr-0 w-1/4">
+                                    <div className="w-36 mask mask-hexagon">
+                                        <img src={user?.photoURL} alt={user?.displayName} />
+                                    </div>
+
+                                </div>
+                                {/* Name Section  */}
+                                <div>
+                                    <h1 className="text-xl font-bold">{user?.displayName}</h1>
+                                    <p>{user?.email}</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
@@ -171,7 +193,23 @@ const MyProfile = () => {
                                 {...register("image")} />
                         </div>
 
+
                         <input type="submit" className="btn w-full btn-primary text-white max-w-xs" value='Update Profile' />
+                        <div className=" flex flex-row justify-evenly items-center px-5 lg:px-10 py-5">
+                            <button
+                                className="btn btn-primary"
+                                disabled={isEdit}
+                                onClick={handleEdit}
+                            >
+                                Edit
+                            </button>
+                            <input
+                                type="submit"
+                                className="btn btn-secondary"
+                                disabled={!isEdit}
+                            />
+                        </div>
+
                     </form>
 
                 </div>

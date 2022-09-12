@@ -25,6 +25,7 @@ import Portfolio from './Pages/Portfolio/Portfolio';
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import DashboardNavbar from './Pages/Shared/Navbar/DashboardNavbar';
 
 
 function App() {
@@ -32,7 +33,10 @@ function App() {
 
   return (
     <div className="">
-      <Navbar />
+      {!pathname.includes('dashboard') && <Navbar />}
+
+      {pathname.includes('dashboard') && <DashboardNavbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
