@@ -35,7 +35,8 @@ const MyOrders = () => {
 
     return (
 
-        <div className="overflow-x-auto px-5">
+        <div className="overflow-x-auto mt-10 px-10">
+            <h2 className="text-center text-2xl uppercase font-bold text-primary pb-5 ">Your Orders</h2>
             <table className="table w-full">
 
                 <thead>

@@ -57,7 +57,7 @@ const ManageOrders = () => {
     return (
 
         <div className="overflow-x-auto px-10">
-            <h1 className='text-xl lg:text-3xl text-primary text-center mt-10 my-5 font-bold'>Manage Order Section</h1>
+            <h1 className='text-xl lg:text-2xl uppercase text-primary text-center mt-10 my-5 font-bold'>Manage Order Section</h1>
             <table className="table w-full">
 
                 <thead>

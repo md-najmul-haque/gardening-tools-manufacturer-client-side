@@ -72,7 +72,7 @@ const MyReviews = () => {
     return (
         <div className="w-96 lg:w-1/2 h-screen p-10 mx-auto">
 
-            <h2 className="text-center text-3xl font-semibold text-primary my-5">Add Your Reviews!</h2>
+            <h2 className="text-center text-2xl uppercase font-bold text-primary my-5">Add Your Reviews!</h2>
 
             <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
