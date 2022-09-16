@@ -39,8 +39,7 @@ const ContactUs = () => {
     };
 
     return (
-
-        <div className="hero contact-section min-h-fit pt-20 pb-40" >
+        <div id='contact' className="hero contact-section min-h-fit pt-20 pb-40" >
             <div data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" className="hero-content w-11/12 shadow-2xl bg-base-100 flex-col lg:flex-row mx-auto">
                 <div className="card w-96 shadow-xl image-full">
                     <figure><img src={contactTool3} alt="Shoes" /></figure>

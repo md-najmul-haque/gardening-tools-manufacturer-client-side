@@ -20,8 +20,6 @@ import AddProduct from './Pages/DashBoard/AddProduct/AddProduct';
 import ManageProduct from './Pages/DashBoard/ManageProduct/ManageProduct';
 import RequireAdmin from './Pages/Login/RequireAdmin/RequireAdmin';
 import Payment from './Pages/DashBoard/Payment/Payment';
-import Blogs from './Pages/Blogs/Blogs';
-import Portfolio from './Pages/Portfolio/Portfolio';
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -39,9 +37,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/portfolio" element={<Portfolio />} />
->
+
         <Route path="/purchase/:id" element={
           <RequireAuth>
             <Purchase />

@@ -8,7 +8,6 @@ import Loading from '../../Shared/Loading/Loading';
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth)
     const [admin, adminLoading] = useAdmin(user)
-    const { pathname } = useLocation()
 
     if (loading || adminLoading) {
         return <Loading />
@@ -18,7 +17,7 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                {pathname.includes('dashboard') && <h1 className='text-xl lg:text-2xl text-primary uppercase text-center my-5 font-bold'>Welcome to your dashboard</h1>}
+                <h1 className='text-xl lg:text-2xl text-primary uppercase text-center my-5 font-bold'>Welcome to your dashboard</h1>
                 <Outlet />
             </div>
             <div className="drawer-side">

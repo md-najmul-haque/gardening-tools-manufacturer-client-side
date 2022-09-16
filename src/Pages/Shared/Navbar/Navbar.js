@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
 import gardeningLogo from '../../../assets/logo/gardeningLogo.png'
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
 
@@ -29,8 +30,9 @@ const Navbar = () => {
             user && <li><Link to='/dashboard'>Dashboard</Link></li>
         }
 
-        <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/portfolio'>Portfolio</Link></li>
+        <li><HashLink to='#products'>Products</HashLink></li>
+        <li><HashLink to='#testimonial'>Testimonial</HashLink></li>
+        <li><HashLink to='#contact'>Contact</HashLink></li>
 
         {
             user && <li><Link to=''>{user?.displayName}</Link></li>

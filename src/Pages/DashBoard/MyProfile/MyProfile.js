@@ -6,6 +6,7 @@ import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
 import defaultUser from '../../../assets/user/defaultUser.png'
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth)
@@ -84,7 +85,7 @@ const MyProfile = () => {
             <div className=" card  shadow-lg w-96 lg:w-6/12 px-5 lg:px-10">
                 <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="w-full bg-base-200 my-2 flex flex-row justify-center">
+                    <div style={{ backgroundColor: '#B9FFF8' }} className="w-full my-2 flex flex-row justify-center">
                         <div className="px-10 py-5 w-5/6 lg:w-10/12">
                             {isEdit ? (
 
@@ -106,7 +107,7 @@ const MyProfile = () => {
                     </div>
 
                     <h1 className="text-xl font-bold">{user?.displayName}</h1>
-                    <p>{user?.email}</p>
+                    <p><span className='font-medium'>Email: </span>{user?.email}</p>
 
                     {
                         isEdit ? <div className="form-control w-full max-w-xs mb-2">
@@ -116,7 +117,7 @@ const MyProfile = () => {
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("education")} />
                         </div>
-                            : <p>Education: {userProfile?.education} </p>
+                            : <p><span className='font-medium'>Education:</span> {userProfile?.education} </p>
                     }
 
                     {
@@ -126,7 +127,7 @@ const MyProfile = () => {
                                 placeholder="Enter your LinkedIn profile link"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("linkedin")} />
-                        </div> : <p>LinkedIn: {userProfile?.linkedin} </p>
+                        </div> : <p><span className='font-medium'> LinkedIn: </span> <Link to={userProfile?.linkedin} target="_blank">{userProfile?.linkedin}</Link> </p>
                     }
 
                     {
@@ -136,7 +137,7 @@ const MyProfile = () => {
                                 placeholder="Enter your GitHub profile link"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("github")} />
-                        </div> : <p>GitHub: {userProfile?.github} </p>
+                        </div> : <p> <span className='font-medium'>GitHub: </span><Link to={userProfile?.github} target="_blank">{userProfile?.github}</Link>  </p>
                     }
 
                     {
@@ -147,7 +148,7 @@ const MyProfile = () => {
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("address")} />
 
-                        </div> : <p>Address: {userProfile?.address} </p>
+                        </div> : <p> <span className='font-medium'> Address: </span> {userProfile?.address} </p>
                     }
 
                     {
@@ -157,7 +158,7 @@ const MyProfile = () => {
                                 placeholder="State / City"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("state")} />
-                        </div> : <p>State: {userProfile?.state} </p>
+                        </div> : <p> <span className='font-medium'> State: </span> {userProfile?.state} </p>
                     }
 
                     {
@@ -167,7 +168,7 @@ const MyProfile = () => {
                                 placeholder="Country"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("country")} />
-                        </div> : <p>Country: {userProfile?.country} </p>
+                        </div> : <p> <span className='font-medium'> Country: </span> {userProfile?.country} </p>
                     }
 
                     {
@@ -177,7 +178,7 @@ const MyProfile = () => {
                                 placeholder="Phone Number"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("phone")} />
-                        </div> : <p>Phone: {userProfile?.phone} </p>
+                        </div> : <p> <span className='font-medium'>Phone: </span> {userProfile?.phone}</p>
 
                     }
 
