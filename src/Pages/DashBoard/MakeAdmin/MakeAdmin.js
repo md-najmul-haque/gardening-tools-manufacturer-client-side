@@ -15,8 +15,9 @@ const MakeAdmin = () => {
     }
 
     return (
-        <div>
-            <h2 className="text-2xl">All Users: {users.length}</h2>
+        <div className='px-10'>
+            <h1 className='text-xl lg:text-2xl text-primary uppercase text-center mt-10 my-5 font-bold'>Admin Route</h1>
+            <h2 className="text-2xl mb-3">Total Users: {users.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

@@ -80,128 +80,132 @@ const MyProfile = () => {
     };
 
     return (
-        <div className=" flex justify-center items-center mt-10">
-            <div className=" card  shadow-lg w-96 lg:w-6/12 px-5 lg:px-10">
-                <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
+        <div>
+            <h1 className='text-xl lg:text-2xl text-primary uppercase text-center mt-10 my-5 font-bold'>Welcome to Your Profile</h1>
+            <div className=" flex justify-center items-center">
+                <div className=" card  shadow-lg w-96 lg:w-6/12 px-5 lg:px-10">
+                    <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
-                    <div style={{ backgroundColor: '#B9FFF8' }} className="w-full my-2 flex flex-row justify-center">
-                        <div className="px-10 py-5 w-5/6 lg:w-10/12">
-                            {isEdit ? (
+                        <div style={{ backgroundColor: '#B9FFF8' }} className="w-full my-2 flex flex-row justify-center">
+                            <div className="px-10 py-5 w-5/6 lg:w-10/12">
+                                {isEdit ? (
 
-                                <input
-                                    type="file"
-                                    className="input input-bordered input-secondary w-full"
-                                    required='true'
-                                    {...register("image")}
-                                />
-                            ) : (
-                                <div className="avatar flex items-center justify-center">
-                                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                        <img src={userProfile.img ? userProfile.img : defaultUser} alt='' />
+                                    <input
+                                        type="file"
+                                        className="input input-bordered input-secondary w-full"
+                                        required='true'
+                                        {...register("image")}
+                                    />
+                                ) : (
+                                    <div className="avatar flex items-center justify-center">
+                                        <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                            <img src={userProfile.img ? userProfile.img : defaultUser} alt='' />
+                                        </div>
                                     </div>
-                                </div>
 
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                    <h1 className="text-xl font-bold">{user?.displayName}</h1>
-                    <p><span className='font-medium'>Email: </span>{user?.email}</p>
+                        <h1 className="text-xl font-bold">{user?.displayName}</h1>
+                        <p><span className='font-medium'>Email: </span>{user?.email}</p>
 
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Enter your education"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("education")} />
+                            </div>
+                                : <p><span className='font-medium'>Education:</span> {userProfile?.education} </p>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Enter your LinkedIn profile link"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("linkedin")} />
+                            </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.linkedin}`} target='_black'>{userProfile?.linkedin ? 'LinkedIn Profile Link' : ''}</a></div>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Enter your GitHub profile link"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("github")} />
+                            </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.github}`} target='_black'>{userProfile?.github ? 'GitHub Profile Link' : ''}</a></div>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Your Address"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("address")} />
+
+                            </div> : <p> <span className='font-medium'> Address: </span> {userProfile?.address} </p>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="State / City"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("state")} />
+                            </div> : <p> <span className='font-medium'> State: </span> {userProfile?.state} </p>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Country"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("country")} />
+                            </div> : <p> <span className='font-medium'> Country: </span> {userProfile?.country} </p>
+                        }
+
+                        {
+                            isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                                <input
+                                    type="text"
+                                    placeholder="Phone Number"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("phone")} />
+                            </div> : <p> <span className='font-medium'>Phone: </span> {userProfile?.phone}</p>
+
+                        }
+
+                        <div className=" flex flex-row justify-evenly items-center py-5">
+                            <button
+                                className="btn btn-primary px-7"
+                                disabled={isEdit}
+                                onClick={handleEdit}
+                            >
+                                Edit
+                            </button>
                             <input
-                                type="text"
-                                placeholder="Enter your education"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("education")} />
+                                type="submit"
+                                className="btn btn-secondary"
+                                value='Update Profile'
+                                disabled={!isEdit}
+                            />
                         </div>
-                            : <p><span className='font-medium'>Education:</span> {userProfile?.education} </p>
-                    }
 
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Enter your LinkedIn profile link"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("linkedin")} />
-                        </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.linkedin}`} target='_black'>{userProfile?.linkedin ? 'LinkedIn Profile Link' : ''}</a></div>
-                    }
+                    </form>
 
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Enter your GitHub profile link"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("github")} />
-                        </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.github}`} target='_black'>{userProfile?.github ? 'GitHub Profile Link' : ''}</a></div>
-                    }
-
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Your Address"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("address")} />
-
-                        </div> : <p> <span className='font-medium'> Address: </span> {userProfile?.address} </p>
-                    }
-
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="State / City"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("state")} />
-                        </div> : <p> <span className='font-medium'> State: </span> {userProfile?.state} </p>
-                    }
-
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Country"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("country")} />
-                        </div> : <p> <span className='font-medium'> Country: </span> {userProfile?.country} </p>
-                    }
-
-                    {
-                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Phone Number"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("phone")} />
-                        </div> : <p> <span className='font-medium'>Phone: </span> {userProfile?.phone}</p>
-
-                    }
-
-                    <div className=" flex flex-row justify-evenly items-center py-5">
-                        <button
-                            className="btn btn-primary px-7"
-                            disabled={isEdit}
-                            onClick={handleEdit}
-                        >
-                            Edit
-                        </button>
-                        <input
-                            type="submit"
-                            className="btn btn-secondary"
-                            value='Update Profile'
-                            disabled={!isEdit}
-                        />
-                    </div>
-
-                </form>
+                </div>
 
             </div>
-
-        </div>);
+        </div>
+    );
 };
 
 export default MyProfile;

@@ -27,7 +27,7 @@ const Navbar = () => {
     const menuItem = <>
         <li><Link to='/'>Home</Link></li>
         {
-            user && <li><Link to='/dashboard'>Dashboard</Link></li>
+            user && <li><Link to='/dashboard/profile'>Dashboard</Link></li>
         }
 
         <li><HashLink to='/#products'>Products</HashLink></li>

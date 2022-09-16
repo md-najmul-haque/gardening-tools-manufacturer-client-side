@@ -60,7 +60,7 @@ const AddProduct = () => {
             <div className="hero-content flex-col lg:flex-row justify-start">
 
                 <div className="card-body w-96">
-                    <h2 className="text-center text-2xl font-bold text-primary mb-2">Add New Products!</h2>
+                    <h2 className="text-center text-3xl font-bold text-primary mb-2">Add New Products!</h2>
 
                     <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs mb-2">
