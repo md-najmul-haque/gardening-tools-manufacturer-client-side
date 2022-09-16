@@ -5,7 +5,7 @@ const useProducts = () => {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`https://serene-wave-89546.herokuapp.com/tools`)
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

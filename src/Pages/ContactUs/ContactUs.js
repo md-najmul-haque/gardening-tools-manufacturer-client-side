@@ -21,7 +21,7 @@ const ContactUs = () => {
             address: data.address,
             message: data.message
         }
-        fetch(`https://serene-wave-89546.herokuapp.com/contact`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/contact`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

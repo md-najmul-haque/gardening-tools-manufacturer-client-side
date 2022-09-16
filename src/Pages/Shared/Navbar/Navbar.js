@@ -10,7 +10,7 @@ import { HashLink } from 'react-router-hash-link';
 const Navbar = () => {
 
     const [user, loading] = useAuthState(auth);
-    console.log(user)
+    // console.log(user)
 
     const navigate = useNavigate()
 
@@ -30,9 +30,9 @@ const Navbar = () => {
             user && <li><Link to='/dashboard'>Dashboard</Link></li>
         }
 
-        <li><HashLink to='#products'>Products</HashLink></li>
-        <li><HashLink to='#testimonial'>Testimonial</HashLink></li>
-        <li><HashLink to='#contact'>Contact</HashLink></li>
+        <li><HashLink to='/#products'>Products</HashLink></li>
+        <li><HashLink to='/#testimonial'>Testimonial</HashLink></li>
+        <li><HashLink to='/#contact'>Contact</HashLink></li>
 
         {
             user && <li><Link to=''>{user?.displayName}</Link></li>

@@ -5,7 +5,7 @@ const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://serene-wave-89546.herokuapp.com/users/admin/${email}`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/users/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

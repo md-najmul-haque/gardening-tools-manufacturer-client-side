@@ -13,7 +13,7 @@ const MyOrders = () => {
     const [booking, setBooking] = useState(null)
     const email = user.email;
 
-    const { data: bookings, isLoading, refetch } = useQuery(['bookings', email], () => fetch(`https://serene-wave-89546.herokuapp.com/booking?email=${email}`, {
+    const { data: bookings, isLoading, refetch } = useQuery(['bookings', email], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking?email=${email}`, {
         method: "GET",
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

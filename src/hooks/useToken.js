@@ -10,7 +10,7 @@ const useToken = user => {
         }
 
         if (user) {
-            fetch(`https://serene-wave-89546.herokuapp.com/user/${email}`, {
+            fetch(`https://gardening-tools-manufacturer-server.onrender.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

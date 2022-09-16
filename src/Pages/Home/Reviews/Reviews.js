@@ -8,7 +8,7 @@ const Reviews = (props) => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch(`https://serene-wave-89546.herokuapp.com/reviews`)
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

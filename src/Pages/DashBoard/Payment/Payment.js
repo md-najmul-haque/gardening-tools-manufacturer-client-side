@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L1YV6JtSRYbvKOdrPL64Md7CBgYuMHNSQH3M
 const Payment = () => {
     const { id } = useParams()
 
-    const url = `https://serene-wave-89546.herokuapp.com/booking/${id}`;
+    const url = `https://gardening-tools-manufacturer-server.onrender.com/booking/${id}`;
 
     const { data: booking, isLoading } = useQuery(['booking', id], () => fetch(url, {
         method: "GET",

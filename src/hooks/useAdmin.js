@@ -5,7 +5,7 @@ const useAdmin = user => {
     const [adminLoading, setAdminLoading] = useState(true)
     const email = user.email
     useEffect(() => {
-        fetch(`https://serene-wave-89546.herokuapp.com/admin/${email}`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/admin/${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

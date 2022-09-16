@@ -16,7 +16,7 @@ const Purchase = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: tool, isLoading } = useQuery('tool', () => fetch(`https://serene-wave-89546.herokuapp.com/tools/${id}`)
+    const { data: tool, isLoading } = useQuery('tool', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools/${id}`)
         .then(res => res.json()))
 
     if (loading || isLoading) {
@@ -39,7 +39,7 @@ const Purchase = () => {
             orderQuantity: data.number
 
         }
-        fetch(`https://serene-wave-89546.herokuapp.com/booking`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

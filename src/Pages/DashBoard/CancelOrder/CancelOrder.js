@@ -5,7 +5,7 @@ const CancelOrder = ({ booking, refetch }) => {
     const { _id, toolName, orderQuantity, price } = booking
 
     const cancelOrder = id => {
-        fetch(`https://serene-wave-89546.herokuapp.com/booking/${_id}`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking/${_id}`, {
             method: 'delete',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

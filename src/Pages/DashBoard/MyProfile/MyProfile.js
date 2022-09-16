@@ -6,14 +6,13 @@ import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
 import defaultUser from '../../../assets/user/defaultUser.png'
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth)
     const [isEdit, setIsEdit] = useState(false);
     const email = user.email
 
-    const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`https://serene-wave-89546.herokuapp.com/user?email=${email}`)
+    const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/user?email=${email}`)
         .then(res => {
             return res.json()
         }))
@@ -58,7 +57,7 @@ const MyProfile = () => {
                     phone: data.phone,
                     img: image
                 }
-                fetch(`https://serene-wave-89546.herokuapp.com/user/${email}`, {
+                fetch(`https://gardening-tools-manufacturer-server.onrender.com/user/${email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -92,7 +91,7 @@ const MyProfile = () => {
                                 <input
                                     type="file"
                                     className="input input-bordered input-secondary w-full"
-
+                                    required='true'
                                     {...register("image")}
                                 />
                             ) : (
@@ -127,7 +126,7 @@ const MyProfile = () => {
                                 placeholder="Enter your LinkedIn profile link"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("linkedin")} />
-                        </div> : <p><span className='font-medium'> LinkedIn: </span> <Link to={userProfile?.linkedin} target="_blank">{userProfile?.linkedin}</Link> </p>
+                        </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.linkedin}`} target='_black'>{userProfile?.linkedin ? 'LinkedIn Profile Link' : ''}</a></div>
                     }
 
                     {
@@ -137,7 +136,7 @@ const MyProfile = () => {
                                 placeholder="Enter your GitHub profile link"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("github")} />
-                        </div> : <p> <span className='font-medium'>GitHub: </span><Link to={userProfile?.github} target="_blank">{userProfile?.github}</Link>  </p>
+                        </div> : <div><span className='font-medium'> LinkedIn: </span> <a style={{ color: "#0000EE" }} href={`${userProfile?.github}`} target='_black'>{userProfile?.github ? 'GitHub Profile Link' : ''}</a></div>
                     }
 
                     {

@@ -19,7 +19,7 @@ const CheckoutForm = ({ booking }) => {
 
 
     useEffect(() => {
-        fetch(`https://serene-wave-89546.herokuapp.com/create-payment-intent`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ booking }) => {
                 transactionId: paymentIntent.id
 
             }
-            fetch(`https://serene-wave-89546.herokuapp.com/booking/${_id}`, {
+            fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

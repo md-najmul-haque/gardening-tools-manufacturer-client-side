@@ -6,7 +6,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 const ManageOrders = () => {
 
-    const { data: orders, isLoading, refetch } = useQuery('bookings', () => fetch(`https://serene-wave-89546.herokuapp.com/order`, {
+    const { data: orders, isLoading, refetch } = useQuery('bookings', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/order`, {
         method: "GET",
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const ManageOrders = () => {
             shipped: 'Shipped'
         }
 
-        fetch(`https://serene-wave-89546.herokuapp.com/order/${id}`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/order/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

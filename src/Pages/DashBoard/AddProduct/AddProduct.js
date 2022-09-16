@@ -33,7 +33,7 @@ const AddProduct = () => {
                         available: data.available,
                     }
 
-                    fetch(`https://serene-wave-89546.herokuapp.com/tools`, {
+                    fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

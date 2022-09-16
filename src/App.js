@@ -23,7 +23,6 @@ import Payment from './Pages/DashBoard/Payment/Payment';
 import "react-multi-carousel/lib/styles.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import DashboardNavbar from './Pages/Shared/Navbar/DashboardNavbar';
 
 
 function App() {
@@ -31,10 +30,7 @@ function App() {
 
   return (
     <div className="">
-      {!pathname.includes('dashboard') && <Navbar />}
-
-      {pathname.includes('dashboard') && <DashboardNavbar />}
-
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
 

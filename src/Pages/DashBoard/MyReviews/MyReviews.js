@@ -48,7 +48,7 @@ const MyReviews = () => {
             rating: rating,
         }
 
-        fetch(`https://serene-wave-89546.herokuapp.com/reviews`, {
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
