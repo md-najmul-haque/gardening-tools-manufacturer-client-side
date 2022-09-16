@@ -42,7 +42,7 @@ const MyProfile = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 const image = result.data.url
 
                 const userProfile = {
@@ -50,6 +50,7 @@ const MyProfile = () => {
                     email: email,
                     education: data.education,
                     linkedin: data.linkedin,
+                    github: data.github,
                     address: data.address,
                     state: data.state,
                     country: data.country,
@@ -65,159 +66,142 @@ const MyProfile = () => {
                 })
                     .then(res => res.json())
                     .then(result => {
-                        toast.success(`Your profile is updated successfully`)
-                        refetch();
-                        reset();
-
+                        console.log(result)
+                        if (result.result.acknowledged === true) {
+                            toast.success(`Your profile is updated successfully`)
+                            reset();
+                            setIsEdit(false);
+                            refetch();
+                        } else {
+                            toast.error(`Sorry! Internal server error, please try after sometime`)
+                        }
                     });
             })
-
     };
 
     return (
+        <div className=" flex justify-center items-center mt-10">
+            <div className=" card  shadow-lg w-96 lg:w-6/12 px-5 lg:px-10">
+                <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
 
-        <div className="hero">
-            <div className="hero-content flex flex-col lg:flex-row justify-center">
-                <div className="card w-96">
-                    <figure className="px-10 pt-10">
-                        <img className='w-6/12 rounded' src={userProfile.img ? userProfile.img : defaultUser} alt="" />
-                    </figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Name: {userProfile?.customerName}</h2>
-                        <p>Email: {userProfile.email}</p>
-                        <p>Education: {userProfile?.education} </p>
-                        <p>LinkedIn: {userProfile?.linkedin} </p>
-                        <p>Address: {userProfile?.address} </p>
-                        <p>State: {userProfile?.state} </p>
-                        <p>Country: {userProfile?.country} </p>
-                        <p>Phone: {userProfile?.phone} </p>
+                    <div className="w-full bg-base-200 my-2 flex flex-row justify-center">
+                        <div className="px-10 py-5 w-5/6 lg:w-10/12">
+                            {isEdit ? (
+
+                                <input
+                                    type="file"
+                                    className="input input-bordered input-secondary w-full"
+
+                                    {...register("image")}
+                                />
+                            ) : (
+                                <div className="avatar flex items-center justify-center">
+                                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img src={userProfile.img ? userProfile.img : defaultUser} alt='' />
+                                    </div>
+                                </div>
+
+                            )}
+                        </div>
                     </div>
 
-                </div>
+                    <h1 className="text-xl font-bold">{user?.displayName}</h1>
+                    <p>{user?.email}</p>
 
-                <div className="card-body w-96">
-                    <h2 className="text-primary text-2xl font-bold">Update Your Profile!</h2>
-
-                    <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
-
-                        <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-3/4 lg:w-2/3 justify-center items-center">
-                            <div className="flex items-center bg-slate-200 w-full">
-                                <div className="avatar p-5 pr-0 w-1/4">
-                                    <div className="w-36 mask mask-hexagon">
-                                        <img src={user?.photoURL} alt={user?.displayName} />
-                                    </div>
-
-                                </div>
-                                {/* Name Section  */}
-                                <div>
-                                    <h1 className="text-xl font-bold">{user?.displayName}</h1>
-                                    <p>{user?.email}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Your Name"
-                                className="input input-bordered w-full max-w-xs"
-                                value={user?.displayName}
-                                {...register("name")} />
-                        </div>
-
-
-                        <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-xs"
-                                value={user?.email}
-                                disabled
-                                {...register("email")} />
-                        </div>
-
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="Enter your education"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("education")} />
                         </div>
+                            : <p>Education: {userProfile?.education} </p>
+                    }
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="Enter your LinkedIn profile link"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("linkedin")} />
-                        </div>
+                        </div> : <p>LinkedIn: {userProfile?.linkedin} </p>
+                    }
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
+                            <input
+                                type="text"
+                                placeholder="Enter your GitHub profile link"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("github")} />
+                        </div> : <p>GitHub: {userProfile?.github} </p>
+                    }
+
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="Your Address"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("address")} />
 
-                        </div>
+                        </div> : <p>Address: {userProfile?.address} </p>
+                    }
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="State / City"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("state")} />
-                        </div>
+                        </div> : <p>State: {userProfile?.state} </p>
+                    }
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="Country"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("country")} />
-                        </div>
+                        </div> : <p>Country: {userProfile?.country} </p>
+                    }
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                    {
+                        isEdit ? <div className="form-control w-full max-w-xs mb-2">
                             <input
                                 type="text"
                                 placeholder="Phone Number"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("phone")} />
-                        </div>
+                        </div> : <p>Phone: {userProfile?.phone} </p>
 
-                        <div className="form-control w-full max-w-xs mb-2">
-                            <input
-                                type="file"
-                                placeholder="Product Image"
-                                className="input input-bordered w-full max-w-xs"
-                                {...register("image")} />
-                        </div>
+                    }
 
+                    <div className=" flex flex-row justify-evenly items-center py-5">
+                        <button
+                            className="btn btn-primary px-7"
+                            disabled={isEdit}
+                            onClick={handleEdit}
+                        >
+                            Edit
+                        </button>
+                        <input
+                            type="submit"
+                            className="btn btn-secondary"
+                            value='Update Profile'
+                            disabled={!isEdit}
+                        />
+                    </div>
 
-                        <input type="submit" className="btn w-full btn-primary text-white max-w-xs" value='Update Profile' />
-                        <div className=" flex flex-row justify-evenly items-center px-5 lg:px-10 py-5">
-                            <button
-                                className="btn btn-primary"
-                                disabled={isEdit}
-                                onClick={handleEdit}
-                            >
-                                Edit
-                            </button>
-                            <input
-                                type="submit"
-                                className="btn btn-secondary"
-                                disabled={!isEdit}
-                            />
-                        </div>
-
-                    </form>
-
-                </div>
+                </form>
 
             </div>
-        </div>
 
-    );
+        </div>);
 };
 
 export default MyProfile;

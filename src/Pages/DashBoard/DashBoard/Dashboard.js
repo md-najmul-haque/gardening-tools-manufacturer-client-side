@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useAdmin from '../../../hooks/useAdmin';
 import Loading from '../../Shared/Loading/Loading';
@@ -8,6 +8,7 @@ import Loading from '../../Shared/Loading/Loading';
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth)
     const [admin, adminLoading] = useAdmin(user)
+    const { pathname } = useLocation()
 
     if (loading || adminLoading) {
         return <Loading />
@@ -17,7 +18,7 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                <h1 className='text-xl lg:text-2xl text-primary uppercase text-center my-5 font-bold'>Welcome to your dashboard</h1>
+                {pathname.includes('dashboard') && <h1 className='text-xl lg:text-2xl text-primary uppercase text-center my-5 font-bold'>Welcome to your dashboard</h1>}
                 <Outlet />
             </div>
             <div className="drawer-side">
