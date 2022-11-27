@@ -1,9 +1,10 @@
 # [Gardening Plus](https://gardening-tools-manufacturer.web.app/)
+Gardening Plus is mainly the manufacturer's website.
 
-## Live Website Link [https://gardening-tools-manufacturer.web.app/](https://gardening-tools-manufacturer.web.app/)
+## Live Website Link:
+ [https://gardening-tools-manufacturer.web.app/](https://gardening-tools-manufacturer.web.app/)
 
-### Website's features and functionalities
-- Gardening Plus is mainly the manufacturer's website.
+## Website's features and functionalities
 - Clients can order for wholesale quantity on this website, they can cancel their order before making payment.
 - This website has dashboard to manage my orders and add a review tab for clients.
 - This website dashboard also has to manage all necessary things like manage orders, make admin, and manage products for admin.
@@ -13,7 +14,6 @@
 - Anyone can update their profile information from my profile section in the database.
 - Here dashboard and some routes are protected routes. 
 - Also add banner, business summary, feature, contact, navbar, and footer section.
-- This website also contains one educational blog and a simple portfolio section for the developer. 
 
 ## Technologies Used
 - React
