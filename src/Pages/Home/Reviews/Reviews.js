@@ -3,9 +3,33 @@ import Review from '../Review/Review';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './reviews.css'
+import Loading from '../../Shared/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const Reviews = (props) => {
     const [reviews, setReviews] = useState([])
+
+    // const { data, isLoading, refetch } = useQuery(['reviews'], () =>
+    //     fetch('http://localhost:5000/reviews')
+    //         .then(res => res.json())
+    // )
+
+    // const { isLoading, error, data } = useQuery({
+    //     queryKey: ['repoData'],
+    //     queryFn: () =>
+    //         fetch('http://localhost:5000/reviews').then(res =>
+    //             res.json()
+    //         )
+    // })
+
+
+
+
+    // if (isLoading) {
+    //     <Loading />
+    // }
+
+    // console.log(data)
 
     useEffect(() => {
         fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)

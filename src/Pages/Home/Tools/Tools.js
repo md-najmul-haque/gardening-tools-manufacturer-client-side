@@ -1,10 +1,23 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import useProducts from '../../../hooks/useProducts';
+import Loading from '../../Shared/Loading/Loading';
 import Tool from '../Tool/Tool';
 
 const Tools = () => {
 
-    const [products] = useProducts()
+    const { isLoading, data: products, refetch } = useQuery({
+        queryKey: ['products'],
+        queryFn: () =>
+            fetch('https://gardening-tools-manufacturer-server.onrender.com/tools').then(res =>
+                res.json()
+            )
+    })
+
+    refetch()
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <div id='products' className='py-10'>
