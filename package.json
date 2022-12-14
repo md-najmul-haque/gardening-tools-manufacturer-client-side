@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@trendyol-js/react-carousel": "^2.0.1",
     "aos": "^2.3.4",
+    "axios": "^1.2.1",
     "daisyui": "^2.15.0",
     "firebase": "^9.8.1",
     "install": "^0.13.0",

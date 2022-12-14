@@ -1,41 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Review from '../Review/Review';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './reviews.css'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import Loading from '../../Shared/Loading/Loading';
-import { useQuery } from '@tanstack/react-query';
+
 
 const Reviews = (props) => {
     const [reviews, setReviews] = useState([])
-
-    // const { data, isLoading, refetch } = useQuery(['reviews'], () =>
-    //     fetch('http://localhost:5000/reviews')
-    //         .then(res => res.json())
-    // )
-
-    // const { isLoading, error, data } = useQuery({
-    //     queryKey: ['repoData'],
-    //     queryFn: () =>
-    //         fetch('http://localhost:5000/reviews').then(res =>
-    //             res.json()
-    //         )
-    // })
-
-
-
-
-    // if (isLoading) {
-    //     <Loading />
-    // }
-
-    // console.log(data)
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)
-            .then(res => res.json())
-            .then(data => setReviews(data))
+        setIsLoading(true);
+        axios.get('https://gardening-tools-manufacturer-server.onrender.com/reviews')
+            .then(function (response) {
+                setReviews(response.data)
+                // console.log(response);
+            })
+
+            .catch(error => console.log(error))
+            .finally(
+                () => setIsLoading(false)
+            )
+
     }, [])
+
+    if (isLoading) {
+        return <Loading />
+    }
+
 
     const responsive = {
         desktop: {
@@ -86,8 +81,6 @@ const Reviews = (props) => {
                     reviews.map(review => <Review key={review._id} review={review}></Review>)
                 }
             </Carousel >
-
-
         </div >
     );
 };
