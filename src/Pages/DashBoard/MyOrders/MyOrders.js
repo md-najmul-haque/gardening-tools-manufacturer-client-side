@@ -52,7 +52,7 @@ const MyOrders = () => {
                 <tbody>
 
                     {
-                        bookings.map((booking, index) => <tr key={booking._id}>
+                        bookings?.map((booking, index) => <tr key={booking._id}>
                             <th>{index + 1}</th>
                             <td>{booking.toolName}</td>
                             <td>{booking.orderQuantity} pcs</td>

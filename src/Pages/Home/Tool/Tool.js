@@ -7,7 +7,7 @@ const Tool = ({ product }) => {
     const { _id, name, img, description, price, available, minimumOrderQuantity } = product
     return (
         <div>
-            <div data-aos="zoom-in-up" data-aos-duration="1500" className="card w-96 bg-base-100 shadow-xl mx-auto">
+            <div data-aos="fade-up" data-aos-duration="1500" className="card w-96 bg-base-100 shadow-2xl mx-auto">
                 <figure className="px-10 pt-10">
                     <img className='w-6/12 rounded-xl' src={img} alt="Shoes" />
                 </figure>

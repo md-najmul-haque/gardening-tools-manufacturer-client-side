@@ -3,26 +3,21 @@ import Review from '../Review/Review';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './reviews.css'
-import { useState, useEffect } from 'react';
 import Loading from '../../Shared/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 
 const Reviews = (props) => {
-    const [reviews, setReviews] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)
-            .then(res => res.json())
-            .then(data => setReviews(data))
-        setIsLoading(false)
-    }, [])
+    const { data: reviews, isLoading, refetch } = useQuery(['reviews'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)
+        .then(res => {
+            return res.json()
+        }))
 
     if (isLoading) {
         return <Loading />
     }
 
+    refetch()
 
     const responsive = {
         desktop: {
