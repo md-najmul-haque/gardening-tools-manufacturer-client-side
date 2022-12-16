@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
+import { useQuery } from '@tanstack/react-query';
 
 const Purchase = () => {
     const { id } = useParams()
@@ -16,8 +16,14 @@ const Purchase = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: tool, isLoading } = useQuery('tool', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools/${id}`)
-        .then(res => res.json()))
+    const { isLoading, data: tool } = useQuery({
+        queryKey: ['tool'],
+        queryFn: () =>
+            fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools/${id}`).then(res =>
+                res.json()
+            )
+    })
+
 
     if (loading || isLoading) {
         return <Loading />
