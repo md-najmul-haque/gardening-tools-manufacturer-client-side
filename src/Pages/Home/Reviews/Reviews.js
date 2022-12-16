@@ -3,7 +3,6 @@ import Review from '../Review/Review';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import './reviews.css'
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Loading from '../../Shared/Loading/Loading';
 
@@ -14,17 +13,10 @@ const Reviews = (props) => {
 
     useEffect(() => {
         setIsLoading(true);
-        axios.get('https://gardening-tools-manufacturer-server.onrender.com/reviews')
-            .then(function (response) {
-                setReviews(response.data)
-                // console.log(response);
-            })
-
-            .catch(error => console.log(error))
-            .finally(
-                () => setIsLoading(false)
-            )
-
+        fetch(`https://gardening-tools-manufacturer-server.onrender.com/reviews`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+        setIsLoading(false)
     }, [])
 
     if (isLoading) {
