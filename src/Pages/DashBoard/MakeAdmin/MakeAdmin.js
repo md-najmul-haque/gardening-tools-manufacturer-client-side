@@ -1,10 +1,11 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useQuery } from 'react-query';
+
 import Loading from '../../Shared/Loading/Loading';
 import UserRow from '../UserRow/UserRow';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/users`, {
+    const { data: users, isLoading, refetch } = useQuery(['users'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/users`, {
         method: "GET",
         headers: { authorization: `Bearer, ${localStorage.getItem('accessToken')}` }
 

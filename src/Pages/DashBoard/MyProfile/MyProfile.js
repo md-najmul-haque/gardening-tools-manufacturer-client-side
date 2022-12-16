@@ -5,14 +5,15 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
 import defaultUser from '../../../assets/user/defaultUser.png'
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
+
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth)
     const [isEdit, setIsEdit] = useState(false);
     const email = user.email
 
-    const { data: userProfile, isLoading, refetch } = useQuery('userProfile', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/user?email=${email}`)
+    const { data: userProfile, isLoading, refetch } = useQuery(['userProfile'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/user?email=${email}`)
         .then(res => {
             return res.json()
         }))

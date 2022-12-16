@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
@@ -14,7 +14,7 @@ const ManageProduct = () => {
     const [product, setProduct] = useState(null)
     const email = user.email;
 
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools`)
+    const { data: products, isLoading, refetch } = useQuery(['products'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/tools`)
         .then(res => res.json()))
 
     if (loading || isLoading) {

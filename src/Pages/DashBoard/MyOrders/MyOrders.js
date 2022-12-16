@@ -4,8 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import CancelOrder from '../CancelOrder/CancelOrder';
-import { useQuery } from 'react-query'
 import Loading from '../../Shared/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const MyOrders = () => {
     const [user, loading] = useAuthState(auth)
@@ -13,7 +13,7 @@ const MyOrders = () => {
     const [booking, setBooking] = useState(null)
     const email = user.email;
 
-    const { data: bookings, isLoading, refetch } = useQuery(['bookings', email], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking?email=${email}`, {
+    const { data: bookings, isLoading, refetch } = useQuery(['bookings'], email, () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking?email=${email}`, {
         method: "GET",
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -1,12 +1,13 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useQuery } from 'react-query';
+
 import { Link } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 
 
 const ManageOrders = () => {
 
-    const { data: orders, isLoading, refetch } = useQuery('bookings', () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/order`, {
+    const { data: orders, isLoading, refetch } = useQuery(['bookings'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/order`, {
         method: "GET",
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
