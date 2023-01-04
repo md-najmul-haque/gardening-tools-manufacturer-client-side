@@ -13,10 +13,13 @@ const MyProfile = () => {
     const [isEdit, setIsEdit] = useState(false);
     const email = user.email
 
-    const { data: userProfile, isLoading, refetch } = useQuery(['userProfile'], () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/user?email=${email}`)
-        .then(res => {
-            return res.json()
-        }))
+    const { isLoading, data: userProfile, refetch } = useQuery({
+        queryKey: ['userProfile'],
+        queryFn: () =>
+            fetch(`https://gardening-tools-manufacturer-server.onrender.com/user?email=${email}`).then(res =>
+                res.json()
+            )
+    })
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -28,7 +31,7 @@ const MyProfile = () => {
         setIsEdit(true);
     };
 
-    const imageStorageKey = 'd90f0f7587defd256d8cd2cd85b0500d';
+    const imageStorageKey = '659c9f3714e59a5aab97b06d91ac3782';
 
     const onSubmit = data => {
         const image = data.image[0];
