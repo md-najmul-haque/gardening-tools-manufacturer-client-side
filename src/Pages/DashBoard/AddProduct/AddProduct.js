@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const AddProduct = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const imageStorageKey = 'd90f0f7587defd256d8cd2cd85b0500d'
+    const imageStorageKey = '659c9f3714e59a5aab97b06d91ac3782'
 
     const onSubmit = async data => {
         const image = data.image[0];
