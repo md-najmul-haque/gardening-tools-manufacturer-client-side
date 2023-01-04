@@ -13,21 +13,24 @@ const MyOrders = () => {
     const [booking, setBooking] = useState(null)
     const email = user.email;
 
-    const { data: bookings, isLoading, refetch } = useQuery(['bookings'], email, () => fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking?email=${email}`, {
-        method: "GET",
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
+    const { isLoading, data: bookings, refetch } = useQuery({
+        queryKey: ['bookings'], email,
+        queryFn: () =>
+            fetch(`https://gardening-tools-manufacturer-server.onrender.com/booking?email=${email}`, {
+                method: "GET",
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            }).then(res => {
+                console.log(res)
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                    navigate('/')
+                }
+                return res.json()
+            })
     })
-        .then(res => {
-            console.log(res)
-            if (res.status === 401 || res.status === 403) {
-                signOut(auth);
-                localStorage.removeItem('accessToken');
-                navigate('/')
-            }
-            return res.json()
-        }))
 
     if (loading || isLoading) {
         return <Loading />

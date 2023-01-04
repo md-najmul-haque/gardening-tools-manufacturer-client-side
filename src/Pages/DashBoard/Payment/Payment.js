@@ -1,10 +1,10 @@
 import { Elements } from '@stripe/react-stripe-js';
 import React from 'react';
-import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
+import { useQuery } from '@tanstack/react-query';
 
 const stripePromise = loadStripe('pk_test_51L1YV6JtSRYbvKOdrPL64Md7CBgYuMHNSQH3MyRFxn5fXVs2vZWWRLo9YSzkltLiEMzAElnRagop5JyZwzVNDtr400sMyB71OK');
 
@@ -13,11 +13,18 @@ const Payment = () => {
 
     const url = `https://gardening-tools-manufacturer-server.onrender.com/booking/${id}`;
 
-    const { data: booking, isLoading } = useQuery(['booking', id], () => fetch(url, {
-        method: "GET",
-        headers: { 'authorization': `Bearer ${localStorage.getItem('accessToken')} ` }
+    const { isLoading, data: booking } = useQuery({
+        queryKey: ['booking', id],
+        queryFn: () =>
+            fetch(url, {
+                method: "GET",
+                headers: { 'authorization': `Bearer ${localStorage.getItem('accessToken')} ` }
 
-    }).then(res => res.json()))
+            }).then(res =>
+                res.json()
+            )
+    })
+
 
     if (isLoading) {
         return <Loading />
